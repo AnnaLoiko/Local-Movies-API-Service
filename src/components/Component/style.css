@@ -1,0 +1,5 @@
+.bgMane {
+    filter: blur(2px);
+    opacity: .8;
+    width: 800px;
+}
