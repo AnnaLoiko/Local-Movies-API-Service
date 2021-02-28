@@ -1,11 +1,15 @@
 import React from "react";
 import ReactDOM from 'react-dom';
+import './style';
+import Component from '@/components/Component/Component'
 
-import App from './App';
+const App = () => {
+  return (
+    <>
+      <h1>Local Movies API Service</h1>
+      <Component />
+    </>
+  )
+}
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+ReactDOM.render(<App />, document.getElementById("root"));
