@@ -1,0 +1,29 @@
+@import '~/assets/custom-reset.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
+
+body {
+  min-height: 100%;
+  min-width: 1200px;
+  background : #555555;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  line-height: 1.43;
+  font-weight: 300;
+}
+
+strong {
+  font-weight: 700;
+}
+
+.error {
+  background: #cccccc no-repeat top 100px center / 50% url("./assets/images/404.jpg");
+}
+
+h1 {
+  font-size: 50px;
+  text-transform: uppercase;
+  font-weight: 300;
+  padding-bottom: 30px;
+}
+

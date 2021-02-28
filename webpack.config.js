@@ -41,7 +41,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: `${filename('[ext]')}`,
-              outputPath: "images",
+              outputPath: "assets/images",
             }
           }
         ],
@@ -74,9 +74,5 @@ module.exports = {
     overlay: true,
   },
   devtool: isProd ? false : "source-map",
-  optimization: {
-    splitChunks: {
-      chunks: "all",
-    }
-  }
+
 };
