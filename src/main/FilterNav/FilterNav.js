@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import ResultFilterNavItem from './ResultFilterNavItem/ResultFilterNavItem';
+import FilterNavItem from './FilterNavItem/FilterNavItem';
 
-const ResultFilter = (props) => {
+const FilterNav = (props) => {
   return (
     <ul>
       {props.filterNav.map((item) => (
-        <ResultFilterNavItem
+        <FilterNavItem
           key={item.id}
           title={item.title}
           isSelected={item.isSelected}
@@ -17,8 +17,7 @@ const ResultFilter = (props) => {
   )
 }
 
-ResultFilter.propTypes = {
-  filterNav: PropTypes.array,
+FilterNav.propTypes = {
   filterNav: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
@@ -31,5 +30,5 @@ ResultFilter.propTypes = {
   )
 };
 
-export default ResultFilter;
+export default FilterNav;
 

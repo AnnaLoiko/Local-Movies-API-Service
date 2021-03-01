@@ -33,7 +33,7 @@
 .itemImgWrap {
     margin-bottom: 26px;
     min-height: 444px;
-    background: #424242 no-repeat center / 140px url("../../../../assets/images/bg-no-image.png");
+    background: #424242 no-repeat center / 140px url("../../../assets/images/bg-no-image.png");
 }
 
 .itemImgWrap img {
@@ -44,12 +44,14 @@
     position: absolute;
     top: 0;
     right: 0;
-    border: 1px solid #454545;
-    color: #8f8f8f;
+    border: 1px solid #b4b3b3;
+    color: #818080;
     font-size: 13px;
     line-height: 20px;
     padding: 0 10px;
     border-radius: 5px;
+    height: 22px;
+    width: 48px;
 }
 
 .itemGenre {

@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./style.module";
 
-const ResultFilterNavItem = ({ title, isSelected }) => {
+const FilterNavItem = ({ title, isSelected }) => {
   return (
     <li className={isSelected ? style.active : ''}>
       {title}
@@ -9,5 +9,5 @@ const ResultFilterNavItem = ({ title, isSelected }) => {
   )
 }
 
-export default ResultFilterNavItem;
+export default FilterNavItem;
 

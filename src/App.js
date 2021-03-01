@@ -1,8 +1,8 @@
 import React from "react";
 import "./main.style";
 
-import Layout from '@/components/Layouts';
-import Main from '@/components/Main';
+import Layout from '@/layouts/layout';
+import Main from '@/main/main';
 
 const App = () => {
   return (

@@ -12,8 +12,15 @@
   padding: 10px 60px;
 }
 
-.topContent {
+.topContentWrap {
   max-width: 900px;
   margin: 30px auto 20px;
+}
+
+.topWrap {
+  background: #424242 no-repeat top center / 100% url("../assets/images/bgMain.jpg");
+  min-height: 395px;
+  border-bottom: 10px solid #555555;
+  padding: 20px 60px;
 }
 

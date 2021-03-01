@@ -1,39 +1,39 @@
 import React from "react";
 import style from "./style.module";
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
 import ButtonSecondary from '@/components/ButtonSecondary';
-import Logotip from '@/components/Logotip';
+import Logo from '@/components/Logo';
 import Search from "@/components/Search";
 
-import LayoutTopContentWrap from "./LayoutTopContentWrap/LayoutTopContentWrap";
-
-import ErrorBoundary from '@/Components/ErrorBoundary';
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 const Layout = ({ children }) => {
   return (
     <div className={style.appWrap}>
-      <LayoutTopContentWrap>
+       <div className={style.topWrap}>
         <Header>
-          <Logotip />
+          <Logo />
           <ButtonSecondary text="Add movie" />
         </Header>
         
-        <div className={style.topContent}>
+        <div className={style.topContentWrap}>
           <h1>Find your movie</h1>
           <ErrorBoundary>
             <Search />
           </ErrorBoundary>
         </div>
-      </LayoutTopContentWrap>
+      </div>
 
-      <main className={style.mainWrap}>
-        {children}
-      </main>
+      <ErrorBoundary>
+        <main className={style.mainWrap}>
+          {children}
+        </main>
+      </ErrorBoundary>
       
       <Footer>
-        <Logotip />
+        <Logo />
       </Footer>
     </div>
   )

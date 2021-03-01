@@ -6,15 +6,9 @@ import MovieItem from './MovieItem/MovieItem';
 const MovieList = ({ moviesList }) => {
   return (
     <>
-     {moviesList.map((movie) => (
-       <MovieItem
-         title={movie.title}
-         genre={movie.genre}
-         date={movie.date}
-         src={movie.src}
-         key={movie.id}
-        />
-     ))}
+      {moviesList.map((movie) => (
+        <MovieItem key={movie.id} movie={movie} />
+      ))}
     </>
   )
 }
@@ -31,7 +25,7 @@ MovieList.propTypes = {
         PropTypes.number
       ])
     })
-  ).isRequired
+  )
 }
 
 export default MovieList;
