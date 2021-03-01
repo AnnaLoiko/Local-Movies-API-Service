@@ -1,16 +1,15 @@
 import React from "react";
 import style from "./style.module";
 
-import imageDefault from '@/assets/images/default-image.jpg';
-
 const MovieItem = (props) => {
-  console.log(111, props.img )
+  console.log(111, props.img);
+
   return (
     <div className={style.item}>
       <div className={style.icon}></div>
       
       <div className={style.itemImgWrap}>
-        <img alt="" src={props.img} />
+        <img alt="" src={props.src} />
       </div>
 
       <div className={style.itemInfo}>
@@ -23,8 +22,7 @@ const MovieItem = (props) => {
 }
 
 MovieItem.defaultProps = {
-  date: 'xxxx',
-  img: imageDefault,
+  date: 'Year',
 };
 
 export default MovieItem;

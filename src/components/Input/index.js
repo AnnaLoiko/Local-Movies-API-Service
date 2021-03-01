@@ -1,14 +1,14 @@
 import React from "react";
 import style from "./style.module";
 
-const SearchInput = () => {
+const Input = () => {
   return (
     <input
       type="text"
       placeholder="What do you want to watch?"
-      className={style.searchInput}
+      className={style.input}
     />
   )
 }
 
-export default SearchInput;
+export default Input;

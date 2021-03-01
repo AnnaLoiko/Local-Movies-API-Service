@@ -11,7 +11,7 @@ const MovieList = ({ moviesList }) => {
          title={movie.title}
          genre={movie.genre}
          date={movie.date}
-         img={movie.img}
+         src={movie.src}
          key={movie.id}
         />
      ))}
@@ -22,14 +22,14 @@ const MovieList = ({ moviesList }) => {
 MovieList.propTypes = {
   moviesList: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string,
-      genre: PropTypes.string,
+      title: PropTypes.string.isRequired,
+      genre: PropTypes.string.isRequired,
       date: PropTypes.string,
-      img: PropTypes.string,
+      src: PropTypes.string,
       id: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number
-      ]).isRequired,
+      ])
     })
   ).isRequired
 }

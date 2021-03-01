@@ -1,12 +1,16 @@
 import React from "react";
+import style from "./style.module";
 
 import ButtonPrimary from '@/Components/ButtonPrimary';
-import SearchInput from './SearchInput/SearchInput';
+import Input from '@/Components/Input';
+
 
 const Search = () => {
   return (
     <form>
-      <SearchInput />
+      <div className={style.searchWrap}>
+        <Input />
+      </div>
       <ButtonPrimary text={"Search"} />
     </form>
   )
