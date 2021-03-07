@@ -20,6 +20,13 @@
   min-height: 300px;
   max-height: 95vh;
   overflow-y: auto;
+  scrollbar-width: 0;
+  -ms-overflow-style: none;
+}
+
+.modal::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }
 
 .modalHeader h2 {
