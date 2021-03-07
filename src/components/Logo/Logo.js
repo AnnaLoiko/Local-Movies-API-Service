@@ -1,10 +1,10 @@
 import React from "react";
 import style from "./style.module";
 
-const Logotip = () => {
+const Logo = () => {
   return (
     <a 
-      className={style.logotip}
+      className={style.logo}
       href="https://github.com/AnnaLoiko/Local-Movies-API-Service"
     >
       <strong>netflix</strong>roulette
@@ -12,4 +12,4 @@ const Logotip = () => {
   )
 }
 
-export default Logotip;
+export default Logo;

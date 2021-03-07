@@ -1,0 +1,10 @@
+.item {
+    padding-bottom: 20px;
+}
+.btnWrap {
+    margin-top: 20px;
+    text-align: right;
+}
+.btnWrap button{
+    margin-left: 20px;
+}

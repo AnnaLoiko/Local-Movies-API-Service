@@ -1,0 +1,55 @@
+.btnPrimary {
+    display: inline-block;
+    color: #ffffff;
+    background-color: #F65261;
+    border: 1px solid #F65261;
+    border-radius: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0 30px;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: .5px;
+    line-height: 54px;
+    vertical-align: top;
+    min-width: 180px;
+}
+
+.btnPrimaryInvert {
+    display: inline-block;
+    background-color: #232323;
+    color: #F65261;
+    border: 1px solid #F65261;
+    border-radius: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0 30px;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: .5px;
+    line-height: 54px;
+    vertical-align: top;
+    min-width: 180px;
+}
+
+.btnSecondary {
+    display: inline-block;
+    color: #F65261;
+    background: rgba(66,66,66,0.8);
+    border-radius: 5px;
+    text-align: center;
+    font-size: 22px;
+    line-height: 50px;
+    text-transform: uppercase;
+    padding: 0 20px;
+    font-weight: 500;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+.btnLarge {
+    min-width: 240px;
+}
+
+
