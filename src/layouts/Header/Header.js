@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./style.module";
 
-import MovieAdd from "@/movieAdd/MovieAdd";
+import MovieAdd from "@/main/MovieAdd/MovieAdd";
 import Button from '@/components/Button/Button';
 import Logo from '@/components/Logo/Logo';
 

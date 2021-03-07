@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import style from "./style.module";
 
+import PropTypes from 'prop-types';
+
+import genreList from "@/data/genreList";
+
 const Select = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -11,22 +15,26 @@ const Select = (props) => {
         className={`${style.input} ${isOpen && style.up}`}
         onClick={() => { setIsOpen(!isOpen) }}
       >{props.placeholder}</div>
-      
-      <div className={`${style.selectDropDown} ${!isOpen && style.hide}`}>
-        <div>
-          <input type="checkbox" className={style.checkbox} id="Crime" name="Crime" value="yes" />
-          <label htmlFor="Crime" className={style.lableCheckbox}>Crime</label>
-        </div>
-        
-        <div>
-          <input type="checkbox" className={style.checkbox} id="Horror" name="Horror" value="yes" />
-          <label htmlFor="Horror" className={style.lableCheckbox}>Horror</label>
-        </div>
-      </div>
 
+
+
+      <div className={`${style.selectDropDown} ${!isOpen && style.hide}`}>
+      {genreList.map((item, index) => (
+          <div key={index}>
+            <input className={style.checkbox} type="checkbox" id={item.title} name={item.title} value="" />
+            <label htmlFor={item.title} className={style.lableCheckbox}>{item.title}</label>
+          </div>
+        ))}
+
+      </div>
     </>
   )
 }
+
+Select.propTypes = {
+  title: PropTypes.string,
+  isSelected: PropTypes.bool,
+};
 
 export default Select;
 

@@ -3,7 +3,7 @@ import style from "./style.module.css";
 
 import PropTypes from 'prop-types';
 
-const MoviesCount = ({ count }) => {
+const MovieCount = ({ count }) => {
   return (
     <p className={style.textCount}>
       <strong>{count}</strong> movies found
@@ -11,8 +11,12 @@ const MoviesCount = ({ count }) => {
   )
 }
 
-MoviesCount.propTypes = {
+MovieCount.propTypes = {
   count: PropTypes.number
 };
 
-export default MoviesCount;
+MovieCount.defaultProps = {
+  count: 'Some movies found'
+};
+
+export default MovieCount;

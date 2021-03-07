@@ -22,4 +22,9 @@ Button.propTypes = {
   onClick: PropTypes.func,
 };
 
+Button.defaultProps = {
+  text: 'Button',
+  className: 'btnSecondary'
+};
+
 export default Button;

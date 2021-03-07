@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import ReactDOM from 'react-dom';
 import style from "./style.module";
 
+import PropTypes from 'prop-types';
+
 const Modal = (props) => {
   const { isOpen, title, children, clickCloseModal } = props;
 
@@ -13,13 +15,21 @@ const Modal = (props) => {
 
   useEffect(() => {
     document.addEventListener("keydown", escCloseModal, false);
+    return () => {
+      document.removeEventListener("keydown", escCloseModal, true);
+    };
   }, [])
-  
+
 
   return ReactDOM.createPortal(
     <>
       {isOpen &&
-        <div className={style.modalOverlay}>
+        <>
+          <div className={style.modalOverlay} onClick={(e) => {
+            e.stopPropagation();
+            clickCloseModal();
+          }}></div>
+          
           <div className={style.modal}>
             <div className={style.modalHeader}>
               <span className={style.closeBtn} onClick={clickCloseModal}></span>
@@ -29,29 +39,17 @@ const Modal = (props) => {
               {children}
             </div>
           </div>
-        </div>
+        </>
       }
     </>,
     document.getElementById("root")
   );
-
-  // return (
-  //   <>
-  //     {isOpen &&
-  //       <div className={style.modalOverlay}>
-  //         <div className={style.modalBody}>
-  //           <div className={style.modalHeader}>
-  //             <span className={style.closeBtn} onClick={clickCloseModal}></span>
-  //             <h2>{title}</h2>
-  //           </div>
-  //           <div className={style.modalContent}>
-  //             {children}
-  //           </div>
-  //         </div>
-  //       </div>
-  //     }
-  //   </>
-  // )
 }
+
+Modal.propTypes = {
+  title: PropTypes.string,
+  isOpen: PropTypes.bool,
+  clickCloseModal: PropTypes.func,
+};
 
 export default Modal;

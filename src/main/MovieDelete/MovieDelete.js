@@ -1,6 +1,8 @@
 import React from "react";
 import style from "./style.module.css";
 
+import PropTypes from 'prop-types';
+
 import Button from '@/components/Button/Button';
 import Modal from '@/components/Modal/Modal';
 
@@ -29,5 +31,15 @@ class MovieDelete extends React.Component {
     );
   }
 }
+
+MovieDelete.propTypes = {
+  title: PropTypes.string,
+  isOpen: PropTypes.bool,
+  clickCloseModal: PropTypes.func,
+  movieId: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ])
+};
 
 export default MovieDelete;

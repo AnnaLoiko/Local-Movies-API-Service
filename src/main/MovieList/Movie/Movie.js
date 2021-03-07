@@ -1,35 +1,68 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./style.module";
 
 import PropTypes from 'prop-types';
 
-import MovieActions from "@/main/MovieList/MovieActions/MovieActions";
+import MovieEdit from "@/main/MovieEdit/MovieEdit";
+import MovieDelete from "@/main/MovieDelete/MovieDelete";
 
 
 const Movie = (props) => {
-  const [isShowIcon, setIsShowIcon] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isShow, setIsShow] = useState(false);
+  const [isOpenEdit, setIsOpenEdit] = useState(false);
+  const [isOpenDelete, setIsOpenDelete] = useState(false);
+
+  function escCloseDropDown(event) {
+    if (event.keyCode === 27) {
+      setIsShow(false);
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("keydown", escCloseDropDown, false);
+    return () => {
+      document.removeEventListener("keydown", escCloseDropDown, true);
+    };
+  }, [])
 
   return (
-    <div
-      className={style.itemWrap}
-      onMouseEnter={() => { setIsShowIcon(true) }}
-      onMouseLeave={() => { setIsShowIcon(false) }}
-    >
-      {isShowIcon && <span className={style.iconDropDown} onClick={() => { setIsOpen(true) }}></span>}
+    <>
+      <div className={style.itemWrap}>
+        <span className={style.iconDropDown} onClick={() => { setIsShow(true) }}></span>
 
-      <MovieActions isOpen={isOpen} movie={props.movie} />
+        <div className={style.itemImgWrap}>
+          <img alt="" src={props.movie.src} />
+        </div>
 
-      <div className={style.itemImgWrap}>
-        <img alt="" src={props.movie.src} />
+        <div className={style.itemInfo}>
+          <h3>{props.movie.title}</h3>
+          <p className={style.itemGenre}>{props.movie.genre}</p>
+          <span className={style.itemData}>{props.movie.date}</span>
+        </div>
+
+        <div className={`${!isShow && style.hide} ${style.dropDownListWrap}`}>
+          <button className={style.closeBtn} onClick={() => { setIsShow(false) }}></button>
+          <div className={style.dropDownList}>
+            <div className={style.itemDrop} onClick={() => { setIsOpenEdit(true); setIsShow(false) }}>Edit</div>
+            <div className={style.itemDrop} onClick={() => { setIsOpenDelete(true); setIsShow(false) }}>Delete</div>
+          </div>
+        </div>
       </div>
 
-      <div className={style.itemInfo}>
-        <h3>{props.movie.title}</h3>
-        <p className={style.itemGenre}>{props.movie.genre}</p>
-        <span className={style.itemData}>{props.movie.date}</span>
-      </div>
-    </div>
+      <MovieEdit
+        title="Edit movie"
+        isOpen={isOpenEdit}
+        clickCloseModal={() => { setIsOpenEdit(false) }}
+        movie={props.movie}
+      />
+
+      <MovieDelete
+        title="Delete movie"
+        isOpen={isOpenDelete}
+        clickCloseModal={() => { setIsOpenDelete(false) }}
+        movieId={props.movie.id}
+      />
+    </>
   );
 }
 

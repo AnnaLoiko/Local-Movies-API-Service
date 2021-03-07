@@ -9,6 +9,7 @@ class Sort extends React.Component {
     super(props);
     this.state = {
       isShowDropDown: false,
+      sortListOptions: this.props.sortListOptions,
     };
     this.clickToggleDropDown = this.clickToggleDropDown.bind(this);
   }
@@ -24,14 +25,16 @@ class Sort extends React.Component {
         <div className={`${style.selectWrap} ${this.state.isShowDropDown && style.up}`} onClick={this.clickToggleDropDown}>
           <h4 className={style.label}>Sort by</h4>
           <div className={style.selected}>Relese date</div>
-          
-          
+
+
           <div className={style.dropDownWrap}>
             <div className={`${!this.state.isShowDropDown && style.hide} ${style.dropDownListWrap}`}>
               <div className={style.dropDownList}>
-                <div className={style.itemDrop}>Relese date</div>
-                <div className={style.itemDrop}>Title</div>
-                <div className={style.itemDrop}>Edit</div>
+
+                {this.props.sortListOptions.map((item, index) => (
+                  <div key={index} className={`${item.isSelected && style.active} ${style.itemDrop}`}>{item.title}</div>
+                ))}
+
               </div>
             </div>
           </div>
@@ -42,7 +45,12 @@ class Sort extends React.Component {
 }
 
 Sort.propTypes = {
-  sortListOptions: PropTypes.array,
+  sortListOptions: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      isSelected: PropTypes.bool.isRequired,
+    })
+  )
 };
 
 export default Sort;

@@ -1,11 +1,11 @@
 import React from "react";
 import style from "./style.module";
 
-import moviesList from "@/utils/moviesList";
-import filterNav from "@/utils/filterNav";
-import sortListOptions from "@/utils/sortListOptions";
+import moviesList from "@/data/moviesList";
+import filterNav from "@/data/filterNav";
+import sortListOptions from "@/data/sortListOptions";
 
-import MoviesCount from './MoviesCount/MoviesCount';
+import MovieCount from './MovieCount/MovieCount';
 import FilterNav from './FilterNav/FilterNav';
 import Sort from './Sort/Sort';
 import MovieList from './MovieList/MovieList';
@@ -19,7 +19,7 @@ const Main = () => {
           <Sort sortListOptions={sortListOptions} />
         </div>
 
-        <MoviesCount count={moviesList.length} />
+        <MovieCount count={moviesList.length} />
         
         <div className={style.movieListWrap}>
           <MovieList moviesList={moviesList} />
