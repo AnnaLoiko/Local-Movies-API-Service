@@ -1,53 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import style from "./style.module";
 
 import PropTypes from 'prop-types';
 
+import DropDownList from "@/components/DropDownList/DropDownList";
 
-class Sort extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isShowDropDown: false,
-      sortListOptions: this.props.sortListOptions,
+const Sort = (props) => {
+  const [isShow, setIsShow] = useState(false);
+  const { sortOptions } = props;
+
+  function escCloseDropDown(event) {
+    if (event.keyCode === 27) {
+      setIsShow(false);
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("keydown", escCloseDropDown, false);
+    return () => {
+      document.removeEventListener("keydown", escCloseDropDown, true);
     };
-    this.clickToggleDropDown = this.clickToggleDropDown.bind(this);
-  }
-
-  clickToggleDropDown() {
-    this.setState({ isShowDropDown: !this.state.isShowDropDown });
-  }
-
-  render() {
-
-    return (
-      <>
-        <div className={`${style.selectWrap} ${this.state.isShowDropDown && style.up}`} onClick={this.clickToggleDropDown}>
-          <h4 className={style.label}>Sort by</h4>
-          <div className={style.selected}>Relese date</div>
+  }, [])
 
 
-          <div className={style.dropDownWrap}>
-            <div className={`${!this.state.isShowDropDown && style.hide} ${style.dropDownListWrap}`}>
-              <div className={style.dropDownList}>
-
-                {this.props.sortListOptions.map((item, index) => (
-                  <div key={index} className={`${item.isSelected && style.active} ${style.itemDrop}`}>{item.title}</div>
-                ))}
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  }
+  return (
+    <div className={`${style.selectWrap} ${isShow && style.up}`} onClick={() => { setIsShow(!isShow) }}>
+      <h4 className={style.label}>Sort by</h4>
+      <div className={style.selected}>{sortOptions.filter(item => item.isSelected)[0].lable}</div>
+      <DropDownList
+        className="sortDropDown"
+        items={sortOptions}
+        isShow={isShow}
+        clickClose={() => setIsShow(false)}
+        escClose={() => escCloseDropDown()}
+      />
+    </div>
+  );
 }
 
+
 Sort.propTypes = {
-  sortListOptions: PropTypes.arrayOf(
+  sortOptions: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string.isRequired,
+      lable: PropTypes.string.isRequired,
       isSelected: PropTypes.bool.isRequired,
     })
   )

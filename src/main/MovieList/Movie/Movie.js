@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import MovieEdit from "@/main/MovieEdit/MovieEdit";
 import MovieDelete from "@/main/MovieDelete/MovieDelete";
+import DropDownList from "@/components/DropDownList/DropDownList";
 
 
 const Movie = (props) => {
@@ -25,6 +26,23 @@ const Movie = (props) => {
     };
   }, [])
 
+  const actions = [
+    {
+      lable: 'Edit',
+      func: function () {
+        setIsOpenEdit(true);
+        setIsShow(false)
+      },
+    },
+    {
+      lable: 'Delete',
+      func: function () {
+        setIsOpenDelete(true);
+        setIsShow(false)
+      },
+    },
+  ]
+
   return (
     <>
       <div className={style.itemWrap}>
@@ -40,13 +58,13 @@ const Movie = (props) => {
           <span className={style.itemData}>{props.movie.date}</span>
         </div>
 
-        <div className={`${!isShow && style.hide} ${style.dropDownListWrap}`}>
-          <button className={style.closeBtn} onClick={() => { setIsShow(false) }}></button>
-          <div className={style.dropDownList}>
-            <div className={style.itemDrop} onClick={() => { setIsOpenEdit(true); setIsShow(false) }}>Edit</div>
-            <div className={style.itemDrop} onClick={() => { setIsOpenDelete(true); setIsShow(false) }}>Delete</div>
-          </div>
-        </div>
+        <DropDownList
+          items={actions}
+          isShow={isShow}
+          clickClose={() => setIsShow(false)}
+          escClose={() => escCloseDropDown()}
+        />
+
       </div>
 
       <MovieEdit

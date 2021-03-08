@@ -4,7 +4,8 @@ import style from "./style.module.css";
 import PropTypes from 'prop-types';
 
 import Button from '@/components/Button/Button';
-import Modal from '@/components/Modal/Modal';
+// import Modal from '@/components/Modal/Modal';
+import Modal from '@/components/ModalVar2/Modal';
 
 class MovieDelete extends React.Component {
   constructor(props) {

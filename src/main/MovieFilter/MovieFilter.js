@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import FilterNavItem from './FilterNavItem/FilterNavItem';
+import FilterItem from './FilterItem/FilterItem';
 
-const FilterNav = (props) => {
+const MovieFilter = (props) => {
   return (
     <ul>
-      {props.filterNav.map((item) => (
-        <FilterNavItem
+      {props.filterOptions.map((item) => (
+        <FilterItem
           key={item.id}
           title={item.title}
           isSelected={item.isSelected}
@@ -17,8 +17,8 @@ const FilterNav = (props) => {
   )
 }
 
-FilterNav.propTypes = {
-  filterNav: PropTypes.arrayOf(
+MovieFilter.propTypes = {
+  filterOptions: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
       isSelected: PropTypes.bool,
@@ -30,5 +30,5 @@ FilterNav.propTypes = {
   )
 };
 
-export default FilterNav;
+export default MovieFilter;
 

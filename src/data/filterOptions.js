@@ -1,4 +1,4 @@
-let filterNav = [
+let filterOptions = [
   {
     id: '1',
     title: 'All',
@@ -26,4 +26,4 @@ let filterNav = [
   },
 ]
 
-export default filterNav;
+export default filterOptions;

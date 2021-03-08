@@ -11,6 +11,12 @@ class Header extends React.Component {
     this.state = {
       isOpenModal: false
     };
+    this.openModal = this.openModal.bind(this);
+  }
+
+  openModal(e) {
+    e.preventDefault();
+    this.setState({ isOpenModal: !this.state.isOpenModal })
   }
 
   render() {
@@ -19,7 +25,7 @@ class Header extends React.Component {
         <header className={style.header}>
           <Logo />
           <Button
-            onClick={() => this.setState({ isOpenModal: !this.state.isOpenModal })}
+            onClick={this.openModal}
             text="+ Add movie"
             className="btnSecondary"
           />
