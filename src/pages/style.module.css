@@ -1,0 +1,11 @@
+.topContentWrap {
+  max-width: 900px;
+  margin: 30px auto 20px;
+}
+
+.addMovieBtnWrap {
+  position: absolute;
+  top: 20px;
+  right: 60px;
+}
+

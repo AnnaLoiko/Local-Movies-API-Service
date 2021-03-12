@@ -1,14 +1,15 @@
 import React from "react";
 import "./main.style";
 
-import Layout from '@/layouts/layout';
-import Main from '@/main/main';
+import HomePage from '@/pages/HomePage';
+import MoviePage from '@/pages/MoviePage';
 
 const App = () => {
   return (
-    <Layout>
-      <Main />
-    </Layout>
+    <>
+      <HomePage />
+      {/* <MoviePage /> */}
+    </>
   )
 }
 

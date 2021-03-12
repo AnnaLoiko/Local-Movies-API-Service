@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import FilterItem from './FilterItem/FilterItem';
 
 const MovieFilter = (props) => {
+
   return (
     <ul>
-      {props.filterOptions.map((item) => (
+      {props.filterOptions.map((item, index) => (
         <FilterItem
-          key={item.id}
+          key={index}
           title={item.title}
           isSelected={item.isSelected}
         />
@@ -22,10 +23,6 @@ MovieFilter.propTypes = {
     PropTypes.shape({
       title: PropTypes.string,
       isSelected: PropTypes.bool,
-      id: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number
-      ]).isRequired,
     }),
   )
 };
