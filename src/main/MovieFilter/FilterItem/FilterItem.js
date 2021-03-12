@@ -3,15 +3,16 @@ import style from "./style.module";
 
 import PropTypes from 'prop-types';
 
-const FilterItem = ({ title, isSelected }) => (
-  <li className={`${isSelected && style.active}`}>
-    {title}
+const FilterItem = ( props ) => (
+  <li className={`${props.isSelected && style.active}`} onClick={props.handleClick}>
+    {props.title}
   </li>
 )
 
+
 FilterItem.propTypes = {
-  title: PropTypes.string.isRequired,
-  isSelected: PropTypes.bool.isRequired,
+  title: PropTypes.string,
+  isSelected: PropTypes.bool,  
 };
 
 export default FilterItem;

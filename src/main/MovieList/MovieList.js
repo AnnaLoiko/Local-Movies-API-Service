@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Movie from './Movie/Movie';
 
 const MovieList = ({ moviesList }) => {
+  console.log('moviesList', moviesList);
   return (
     <>
       {moviesList.map((movie) => (
@@ -17,7 +18,7 @@ MovieList.propTypes = {
   moviesList: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      genre: PropTypes.string.isRequired,
+      genre: PropTypes.array.isRequired,
       date: PropTypes.string,
       src: PropTypes.string,
       overview: PropTypes.string,

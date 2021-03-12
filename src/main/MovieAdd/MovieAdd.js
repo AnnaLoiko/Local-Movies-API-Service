@@ -57,7 +57,7 @@ const MovieAdd = (props) => {
           placeholder="Select genre"
           items={data.genreList}
           selectedItems={selectedGenre}
-          onChange={value => setSelectedGenre(value)}
+          handleChange={value => setSelectedGenre(value)}
         />
       </div>
 

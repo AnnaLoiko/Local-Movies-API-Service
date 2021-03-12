@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./style.module";
 
 import moviesList from "@/data/moviesList";
@@ -12,10 +12,10 @@ import MovieList from './MovieList/MovieList';
 const Main = () => {
   const [sortField, setSortField] = useState(null);
   const [sortDirection, setSortDirection] = useState(false);
-
-  const sortedMoviesList = [...moviesList];
+  const [currentMovies, setCurrentMovies] = useState([...moviesList]);
+  
   if (sortField !== null) {
-    sortedMoviesList.sort((a, b) => {
+    currentMovies.sort((a, b) => {
       if (a[sortField] < b[sortField]) {
         return sortDirection ? -1 : 1;
       }
@@ -26,12 +26,22 @@ const Main = () => {
     });
   }
 
+  const [typeFilter, setTypeFilter] = useState("All");
+  useEffect(() => {
+    console.log('typeFilter', typeFilter);
+    if (typeFilter === "All") return;
+    const fileredMovies = [...moviesList].filter(item => item.genre.includes(typeFilter))
+    console.log('currentMovies', fileredMovies);
+    setCurrentMovies(fileredMovies);
+  }, [typeFilter])
+
   return (
     <>
       <div className={style.wrapNav}>
         <MovieFilter
-          handleFilter={() => { console.log(1); }}
-          filterOptions={data.genreList} 
+          items={data.filterOptions}
+          typeFilter={typeFilter}
+          handleFilter={setTypeFilter}
         />
         <MovieSort
           handleSort={() => { setSortField("date"); setSortDirection(!sortDirection); }}
@@ -39,10 +49,10 @@ const Main = () => {
         />
       </div>
 
-      <MovieCount count={moviesList.length} />
+      <MovieCount count={currentMovies.length} />
 
       <main className={style.movieListWrap}>
-        <MovieList moviesList={sortedMoviesList} />
+        <MovieList moviesList={currentMovies} />
       </main>
     </>
   );

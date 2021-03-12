@@ -4,14 +4,14 @@ import style from "./style.module";
 import PropTypes from 'prop-types';
 
 const Select = (props) => {
-  console.log('select', props);
-  const { items, selectedItems, onChange } = props;
+  const { items, selectedItems, handleChange } = props;
+  
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItemsTitle, setSelectedItemsTitle] = useState(selectedItems || props.placeholder);
 
-  function handleChange(checked, value) {
+  function handleChangeSelected(checked, value) {
     const newSelectedItems = checked ? selectedItems.concat(value) : selectedItems.filter( elem => (elem !== value));
-    onChange(newSelectedItems);
+    handleChange(newSelectedItems);
     setSelectedItemsTitle(newSelectedItems);
   }
 
@@ -35,7 +35,7 @@ const Select = (props) => {
               id={item}
               name={item}
               checked={selectedItems.includes(item)}
-              onChange={() => { handleChange(!selectedItems.includes(item), item); }}
+              onChange={() => { handleChangeSelected(!selectedItems.includes(item), item); }}
             />
             <label htmlFor={item} className={style.lableCheckbox}>{item}</label>
           </div>
@@ -50,10 +50,10 @@ Select.propTypes = {
   isSelected: PropTypes.bool,
 };
 
-// Select.defaultProps = {
-//   title: PropTypes.string,
-//   placeholder: PropTypes.bool,
-// };
+Select.defaultProps = {
+  title: "Some title",
+  placeholder: "Value here",
+};
 
 export default Select;
 

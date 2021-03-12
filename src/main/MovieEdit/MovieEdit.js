@@ -15,7 +15,7 @@ import data from '@/data/data';
 
 const MovieEdit = (props) => {
   const { isOpen, clickCloseModal, movie } = props;
-  const [selectedGenre, setSelectedGenre] = useState(movie.genre.split(", "));
+  const [selectedGenre, setSelectedGenre] = useState([...movie.genre]);
   const [startDate, setStartDate] = useState(new Date(movie.date));
 
 
@@ -60,7 +60,7 @@ const MovieEdit = (props) => {
           placeholder="Select genre"
           items={data.genreList}
           selectedItems={selectedGenre}
-          onChange={value => setSelectedGenre(value)}
+          handleChange={value => setSelectedGenre(value)}
         />
       </div>
 

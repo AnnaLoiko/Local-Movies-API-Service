@@ -3,20 +3,13 @@ import style from "./style.module";
 
 import PropTypes from 'prop-types';
 
-import moviesList from "@/data/moviesList";
-
 const MovieSort = (props) => {
-  const { handleSort } = props;
   const [isSortUp, setIsSortUp] = useState(false);
 
   return (
     <div 
       className={`${style.selectWrap} ${isSortUp && style.up}`} 
-      onClick={() => { 
-        console.log('moviesList', moviesList);
-        handleSort();
-        setIsSortUp(!isSortUp)
-      }}
+      onClick={() => { props.handleSort(); setIsSortUp(!isSortUp) }}
     >
       <h4 className={style.label}>Sort by</h4>
       <div className={style.selected}>Relese date</div>
