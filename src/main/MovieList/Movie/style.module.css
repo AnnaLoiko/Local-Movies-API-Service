@@ -11,8 +11,9 @@
 
 .itemImgWrap {
   margin-bottom: 26px;
-  min-height: 444px;
+  height: 444px;
   background: #424242 no-repeat center / 140px url("../../../assets/images/bg-no-image.png");
+  overflow: hidden;
 }
 
 .itemImgWrap img {

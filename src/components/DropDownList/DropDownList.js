@@ -16,7 +16,7 @@ const DropDownList = (props) => {
             className={`${item.isSelected && style.active} ${style.itemDrop}`}
             onClick={item.func}
           >
-            {item.lable}
+            {item.label}
           </div>
         ))}
       </div>

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 const MovieDetails = (props) => {
   return (
-    <div className={style.itemWrap}>
+    <div className={style.wrap}>
       sdfgsfgsgfg
     </div>
   );

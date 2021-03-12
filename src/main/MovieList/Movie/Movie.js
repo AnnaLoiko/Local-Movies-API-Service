@@ -28,14 +28,14 @@ const Movie = (props) => {
 
   const actions = [
     {
-      lable: 'Edit',
+      label: 'Edit',
       func: function () {
         setIsOpenEdit(true);
         setIsShow(false)
       },
     },
     {
-      lable: 'Delete',
+      label: 'Delete',
       func: function () {
         setIsOpenDelete(true);
         setIsShow(false)

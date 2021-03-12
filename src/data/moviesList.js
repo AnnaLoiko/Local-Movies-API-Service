@@ -10,7 +10,7 @@ let moviesList = [
   },
   {
     id: 2,
-    title: '2 Title',
+    title: '7 Title',
     genre: 'Horror, Comedy',
     date: '2003',
     src: 'assets/images/movie-02.jpg',

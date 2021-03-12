@@ -3,60 +3,23 @@ import style from "./style.module";
 
 import PropTypes from 'prop-types';
 
-import DropDownList from "@/components/DropDownList/DropDownList";
+import moviesList from "@/data/moviesList";
 
-const MovieSort = () => {
-  const [isShow, setIsShow] = useState(false);
-
-  function escCloseDropDown(event) {
-    if (event.keyCode === 27) {
-      setIsShow(false);
-    }
-  }
-
-  useEffect(() => {
-    document.addEventListener("keydown", escCloseDropDown, false);
-    return () => {
-      document.removeEventListener("keydown", escCloseDropDown, true);
-    };
-  }, [])
-
-  const sortOptions = [
-    {
-      lable: 'Relese date',
-      isSelected: true,
-      func: function () {
-        console.log("sort Relese date");
-      },
-    },
-    {
-      lable: 'Genre',
-      isSelected: false,
-      func: function () {
-        console.log("sort Genre");
-      },
-    },
-    {
-      lable: 'Genre',
-      isSelected: false,
-      func: function () {
-        console.log("sort Genre")
-      },
-    },
-  ]
-
+const MovieSort = (props) => {
+  const { handleSort } = props;
+  const [isSortUp, setIsSortUp] = useState(false);
 
   return (
-    <div className={`${style.selectWrap} ${isShow && style.up}`} onClick={() => { setIsShow(!isShow) }}>
+    <div 
+      className={`${style.selectWrap} ${isSortUp && style.up}`} 
+      onClick={() => { 
+        console.log('moviesList', moviesList);
+        handleSort();
+        setIsSortUp(!isSortUp)
+      }}
+    >
       <h4 className={style.label}>Sort by</h4>
-      <div className={style.selected}>{sortOptions.filter(item => item.isSelected)[0].lable}</div>
-      <DropDownList
-        className="sortDropDown"
-        items={sortOptions}
-        isShow={isShow}
-        clickClose={() => setIsShow(false)}
-        escClose={() => escCloseDropDown()}
-      />
+      <div className={style.selected}>Relese date</div>
     </div>
   );
 }
