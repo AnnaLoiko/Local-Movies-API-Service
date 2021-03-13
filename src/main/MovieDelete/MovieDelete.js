@@ -16,13 +16,11 @@ const MovieDelete = (props) => {
       isOpen={isOpen}
       clickCloseModal={clickCloseModal}
     >
-
       <p>Are you sure you want to delete this movie?</p>
 
       <div className={style.btnWrap}>
         <Button text="Confirm" className="btnPrimary" />
       </div>
-
     </Modal>
   );
 }

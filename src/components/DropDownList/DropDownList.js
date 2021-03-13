@@ -14,7 +14,7 @@ const DropDownList = (props) => {
           <div
             key={index}
             className={`${item.isSelected && style.active} ${style.itemDrop}`}
-            onClick={item.func}
+            onClick={item.handleClick}
           >
             {item.label}
           </div>

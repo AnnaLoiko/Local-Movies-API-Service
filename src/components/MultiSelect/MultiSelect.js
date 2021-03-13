@@ -3,7 +3,7 @@ import style from "./style.module";
 
 import PropTypes from 'prop-types';
 
-const Select = (props) => {
+const MultiSelect = (props) => {
   const { items, selectedItems, handleChange } = props;
   
   const [isOpen, setIsOpen] = useState(false);
@@ -45,15 +45,15 @@ const Select = (props) => {
   )
 }
 
-Select.propTypes = {
+MultiSelect.propTypes = {
   title: PropTypes.string,
-  isSelected: PropTypes.bool,
+  isMultiSelected: PropTypes.bool,
 };
 
-Select.defaultProps = {
+MultiSelect.defaultProps = {
   title: "Some title",
   placeholder: "Value here",
 };
 
-export default Select;
+export default MultiSelect;
 

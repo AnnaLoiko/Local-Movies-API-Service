@@ -1,0 +1,12 @@
+.itemDrop {
+  padding: 6px 20px;
+  text-align: left;
+  color: #ffffff;
+  cursor: pointer;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.itemDrop:hover, .itemDrop.active {
+  background-color: #F65261;
+}

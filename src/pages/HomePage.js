@@ -21,7 +21,7 @@ const HomePage = () => {
         </div>
 
         <div className={style.topContentWrap}>
-          <h1>Find your movie</h1>
+          <h1 className={style.h1}>Find your movie</h1>
           <Search />
         </div>
       </Layout>

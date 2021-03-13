@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Button from '@/components/Button/Button';
 import Modal from '@/components/Modal/Modal';
 import Input from '@/components/Input/Input';
-import Select from '@/components/Select/Select';
+import MultiSelect from '@/components/MultiSelect/MultiSelect';
 
 import data from '@/data/data';
 
@@ -55,7 +55,7 @@ const MovieEdit = (props) => {
       </div>
 
       <div className={style.item}>
-        <Select
+        <MultiSelect
           label="Genre"
           placeholder="Select genre"
           items={data.genreList}

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Movie from './Movie/Movie';
 
 const MovieList = ({ moviesList }) => {
-  console.log('moviesList', moviesList);
+  // console.log('MoviesList', moviesList);
   return (
     <>
       {moviesList.map((movie) => (

@@ -6,6 +6,17 @@ const filterOptions = [
   'Crime',
 ]
 
+const sortOptions = [
+  {
+    title: "Relese Date",
+    key: "date",
+  },
+  {
+    title: "Title",
+    key: "title",
+  }
+]
+
 const genreList = [
   'Documentary',
   'Comedy',
@@ -15,5 +26,6 @@ const genreList = [
 
 export default {
   filterOptions,
+  sortOptions,
   genreList,
 };

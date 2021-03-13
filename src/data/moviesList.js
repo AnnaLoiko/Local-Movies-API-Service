@@ -7,6 +7,9 @@ let moviesList = [
     src: 'assets/images/movie-01.jpg',
     overview: "1 overview",
     runtime: "1 runtime",
+    rating: "4.3",
+    duration: "154 min",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi exercitationem nihil est maxime accusamus tempore nisi nulla, possimus cumque quam deleniti eius quas, aspernatur reprehenderit dignissimos animi dicta alias molestias.",
   },
   {
     id: 2,
@@ -16,6 +19,9 @@ let moviesList = [
     src: 'assets/images/movie-02.jpg',
     overview: "2 overview",
     runtime: "2 runtime",
+    rating: "4.4",
+    duration: "144 min",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi exercitationem nihil est maxime accusamus tempore nisi nulla, possimus cumque quam deleniti eius quas, aspernatur reprehenderit dignissimos animi dicta alias molestias.",
   },
   {
     id: 3,
@@ -25,6 +31,9 @@ let moviesList = [
     src: 'assets/images/movie-03.jpg',
     overview: "3 overview",
     runtime: "3 runtime",
+    rating: "4.6",
+    duration: "134 min",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi exercitationem nihil est maxime accusamus tempore nisi nulla, possimus cumque quam deleniti eius quas, aspernatur reprehenderit dignissimos animi dicta alias molestias.",
   },
   {
     id: '444',
@@ -34,6 +43,9 @@ let moviesList = [
     src: 'assets/images/movie-04.jpg',
     overview: "4 overview",
     runtime: "4 runtime",
+    rating: "4.7",
+    duration: "164 min",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi exercitationem nihil est maxime accusamus tempore nisi nulla, possimus cumque quam deleniti eius quas, aspernatur reprehenderit dignissimos animi dicta alias molestias.",
   },
   {
     id: 5,
@@ -42,6 +54,9 @@ let moviesList = [
     date: '1967',
     overview: "5 overview",
     runtime: "5 runtime",
+    rating: "4.9",
+    duration: "184 min",
+    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi exercitationem nihil est maxime accusamus tempore nisi nulla, possimus cumque quam deleniti eius quas, aspernatur reprehenderit dignissimos animi dicta alias molestias.",
   },
 ]
 

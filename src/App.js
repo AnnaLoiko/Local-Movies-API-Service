@@ -7,8 +7,8 @@ import MoviePage from '@/pages/MoviePage';
 const App = () => {
   return (
     <>
-      <HomePage />
-      {/* <MoviePage /> */}
+      {/* <HomePage /> */}
+      <MoviePage />
     </>
   )
 }

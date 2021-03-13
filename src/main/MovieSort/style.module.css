@@ -38,39 +38,18 @@
   user-select: none;
 }
 
-.dropDownWrap {
-  /* display: none; */
-  display: block;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  z-index: 2;
-}
-
 .dropDownListWrap {
   display: block;
   position: absolute;
   width: 150px;
-  top: 0;
+  top: 100%;
   right: 0;
   left: auto;
   background-color: #424242;
   padding-top: 8px;
+  z-index: 2;
 }
 
 .dropDownListWrap.hide {
   display: none;
-}
-
-.dropDownList .itemDrop {
-  padding: 6px 20px;
-  text-align: left;
-  color: #ffffff;
-  cursor: pointer;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-}
-
-.dropDownList .itemDrop:hover, .dropDownList .itemDrop.active {
-  background-color: #F65261;
 }
