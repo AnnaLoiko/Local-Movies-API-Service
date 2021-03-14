@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import ReactDOM from 'react-dom';
 import style from "./style.module";
 
@@ -7,11 +7,11 @@ import PropTypes from 'prop-types';
 const Modal = (props) => {
   const { isOpen, title, children, clickCloseModal } = props;
 
-  function escCloseModal(event) {
+  const escCloseModal = useCallback((event) =>{
     if (event.keyCode === 27) {
       clickCloseModal();
     }
-  }
+  }, []);
 
   useEffect(() => {
     document.addEventListener("keydown", escCloseModal, false);
@@ -25,10 +25,7 @@ const Modal = (props) => {
     <>
       {isOpen &&
         <>
-          <div className={style.modalOverlay} onClick={(e) => {
-            e.stopPropagation();
-            clickCloseModal();
-          }}></div>
+          <div className={style.modalOverlay} onClick={clickCloseModal}></div>
           
           <div className={style.modal}>
             <div className={style.modalHeader}>

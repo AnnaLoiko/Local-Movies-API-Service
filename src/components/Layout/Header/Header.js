@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import style from "./style.module";
 
 import Logo from '@/components/Logo/Logo';

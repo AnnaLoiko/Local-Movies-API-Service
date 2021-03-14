@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import style from "./style.module";
 
 import PropTypes from 'prop-types';
+import useToggle from '@/hooks/useToggle';
 
 const MultiSelect = (props) => {
   const { items, selectedItems, handleChange } = props;
   
-  const [isOpen, setIsOpen] = useState(false);
+  const [isChecked, toggleCheck] = useToggle(false);
   const [selectedItemsTitle, setSelectedItemsTitle] = useState(selectedItems || props.placeholder);
 
   function handleChangeSelected(checked, value) {
@@ -20,13 +21,13 @@ const MultiSelect = (props) => {
       {props.label && <label className={style.lableSelect}>{props.label}</label>}
       
       <div
-        className={`${style.input} ${isOpen && style.up}`}
-        onClick={() => { setIsOpen(!isOpen) }}
+        className={`${style.input} ${isChecked && style.up}`}
+        onClick={() => { toggleCheck(!isChecked) }}
       >
         {selectedItemsTitle.length !== 0 ? selectedItemsTitle.join(", ") : props.placeholder}
       </div>
 
-      <div className={`${style.selectDropDown} ${!isOpen && style.hide}`}>
+      <div className={`${style.selectDropDown} ${!isChecked && style.hide}`}>
         {items.map((item, index) => (
           <div key={index}>
             <input
@@ -47,7 +48,7 @@ const MultiSelect = (props) => {
 
 MultiSelect.propTypes = {
   title: PropTypes.string,
-  isMultiSelected: PropTypes.bool,
+  isSelected: PropTypes.bool,
 };
 
 MultiSelect.defaultProps = {

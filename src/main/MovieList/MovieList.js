@@ -3,16 +3,11 @@ import PropTypes from 'prop-types';
 
 import Movie from './Movie/Movie';
 
-const MovieList = ({ moviesList }) => {
-  // console.log('MoviesList', moviesList);
-  return (
-    <>
+const MovieList = ({ moviesList }) => <>
       {moviesList.map((movie) => (
         <Movie key={movie.id} movie={movie} />
       ))}
     </>
-  )
-}
 
 MovieList.propTypes = {
   moviesList: PropTypes.arrayOf(

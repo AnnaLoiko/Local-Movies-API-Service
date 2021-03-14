@@ -1,33 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import style from "./style.module";
-
-import moviesList from "@/data/moviesList";
-import data from "@/data/data";
 
 import MovieCount from './MovieCount/MovieCount';
 import MovieFilter from './MovieFilter/MovieFilter';
 import MovieSort from './MovieSort/MovieSort';
 import MovieList from './MovieList/MovieList';
 
+import moviesList from "@/data/moviesList";
+
 const Main = () => {
-  const [currentMovies, setCurrentMovies] = useState([...moviesList]);
-
-  useEffect(() => {
-    setCurrentMovies(currentMovies);
-  }, [currentMovies])
-
+  const [currentMovies, setCurrentMovies] = useState(moviesList);
 
   return (
     <>
       <div className={style.wrapNav}>
         <MovieFilter
-          items={data.filterOptions}
           moviesList={moviesList}
           setCurrentMovies={setCurrentMovies}
         />
         <MovieSort
-          items={data.sortOptions}
-          moviesList={moviesList}
+          moviesList={currentMovies}
           setCurrentMovies={setCurrentMovies}
         />
       </div>

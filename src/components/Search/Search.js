@@ -5,19 +5,15 @@ import Button from '@/Components/Button/Button';
 import Input from '@/Components/Input/Input';
 
 
-const Search = () => {
+const Search = () => <>
+  <div className={style.searchWrap}>
+    <Input
+      type="text"
+      placeholder="What do you want to watch?"
+    />
+  </div>
+  <Button className="btnPrimary" addClassName="btnLarge" text="Search" onClick={e => e.preventDefault()} />
+</>
 
-  return (
-    <form>
-      <div className={style.searchWrap}>
-        <Input
-          type="text"
-          placeholder="What do you want to watch?"
-        />
-      </div>
-      <Button className="btnPrimary" addClassName="btnLarge" text="Search" />
-    </form>
-  )
-}
 
 export default Search;

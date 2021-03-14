@@ -1,5 +1,6 @@
 .itemDrop {
-  padding: 6px 20px;
+  position: relative;
+  padding: 6px 30px 6px 20px;
   text-align: left;
   color: #ffffff;
   cursor: pointer;
@@ -9,4 +10,22 @@
 
 .itemDrop:hover, .itemDrop.active {
   background-color: #F65261;
+}
+
+.itemDrop.active::after {
+  content: "";
+  position: absolute;
+  right: 8px;
+  top: 15px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-top: 6px solid #ffffff;
+  cursor: pointer;
+}
+
+.itemDrop.active.up::after {
+  top: 8px;
+  border: 6px solid transparent;
+  border-bottom: 6px solid #ffffff;
 }

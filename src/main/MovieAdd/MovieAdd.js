@@ -17,7 +17,6 @@ const MovieAdd = (props) => {
   const [selectedGenre, setSelectedGenre] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
 
-
   return (
     <Modal
       title="Add movie"

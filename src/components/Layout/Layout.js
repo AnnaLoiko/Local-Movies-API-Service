@@ -9,9 +9,7 @@ import Main from "@/main/Main";
 
 import ErrorBoundary from '@/components/ErrorBoundary';
 
-const Layout = ({children}) => {
-  return (
-    <>
+const Layout = ({children}) => <>
       <div className={style.appWrap}>
         <TopBox>
           <Header />
@@ -29,7 +27,6 @@ const Layout = ({children}) => {
         </Footer>
       </div>
     </>
-  );
-}
+
 
 export default Layout;

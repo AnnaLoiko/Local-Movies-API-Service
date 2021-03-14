@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import style from "./style.module";
 
 import PropTypes from 'prop-types';
@@ -13,11 +13,11 @@ const Movie = (props) => {
   const [isOpenEdit, setIsOpenEdit] = useState(false);
   const [isOpenDelete, setIsOpenDelete] = useState(false);
 
-  function escCloseDropDown(event) {
+  const escCloseDropDown = useCallback((event) =>{
     if (event.keyCode === 27) {
       setIsShow(false);
     }
-  }
+  }, []);
 
   useEffect(() => {
     document.addEventListener("keydown", escCloseDropDown, false);
@@ -35,12 +35,12 @@ const Movie = (props) => {
       label: 'Delete',
       handleClick: function () { setIsOpenDelete(true); setIsShow(false) },
     },
-  ]
+  ];
 
   return (
     <>
       <div className={style.itemWrap}>
-        <span className={style.iconDropDown} onClick={() => { setIsShow(true) }}></span>
+        <span className={style.iconDropDown} onClick={() => setIsShow(true)}></span>
 
         <div className={style.itemImgWrap}>
           <img alt="" src={props.movie.src} />
@@ -48,7 +48,7 @@ const Movie = (props) => {
 
         <div className={style.itemInfo}>
           <h3>{props.movie.title}</h3>
-          <p className={style.itemGenre}>{props.movie.genre}</p>
+          <p className={style.itemGenre}>{[...props.movie.genre].join(", ")}</p>
           <span className={style.itemData}>{props.movie.date}</span>
         </div>
 
@@ -56,9 +56,8 @@ const Movie = (props) => {
           items={actions}
           isShow={isShow}
           clickClose={() => setIsShow(false)}
-          escClose={() => escCloseDropDown()}
+          escClose={escCloseDropDown}
         />
-
       </div>
 
       <MovieEdit
@@ -76,7 +75,7 @@ const Movie = (props) => {
       />
     </>
   );
-}
+};
 
 Movie.propTypes = {
   movie: PropTypes.object,

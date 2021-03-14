@@ -14,6 +14,10 @@ const sortOptions = [
   {
     title: "Title",
     key: "title",
+  },
+  {
+    title: "Movie duration",
+    key: "duration",
   }
 ]
 

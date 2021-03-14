@@ -22,7 +22,7 @@ const MovieDetails = (props) => {
           <div className={style.rating} title="Movie rating">{movie.rating}</div>
         </div>
 
-        <p className={style.addInfo} title="Relese genre">{movie.genre}</p>
+        <p className={style.addInfo} title="Relese genre">{[...movie.genre].join(", ")}</p>
 
         <div className={style.flex}>
           <span className={style.itemData} title="Relese date">{movie.date}</span>
