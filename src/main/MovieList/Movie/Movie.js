@@ -9,6 +9,9 @@ import DropDownList from "@/components/DropDownList/DropDownList";
 
 
 const Movie = (props) => {
+  console.log('props', props);
+  const { poster_path, title, genres, release_date, id } = props.movie;
+
   const [isShow, setIsShow] = useState(false);
   const [isOpenEdit, setIsOpenEdit] = useState(false);
   const [isOpenDelete, setIsOpenDelete] = useState(false);
@@ -43,15 +46,15 @@ const Movie = (props) => {
         <span className={style.iconDropDown} onClick={() => setIsShow(true)}></span>
 
         <div className={style.itemImgWrap}>
-          <img alt="" src={props.movie.src} />
+          <img alt="" src={poster_path} />
         </div>
 
         <div className={style.itemInfo}>
-          <h3>{props.movie.title}</h3>
-          <p className={style.itemGenre}>{[...props.movie.genre].join(", ")}</p>
-          <span className={style.itemData}>{props.movie.date}</span>
+          <h3>{title}</h3>
+          <p className={style.itemGenre}>{[...genres].join(", ")}</p>
+          <span className={style.itemData}>{new Date(release_date).getFullYear() || "Year"}</span>
         </div>
-
+        
         <DropDownList
           items={actions}
           isShow={isShow}
@@ -71,7 +74,7 @@ const Movie = (props) => {
         title="Delete movie"
         isOpen={isOpenDelete}
         clickCloseModal={() => { setIsOpenDelete(false) }}
-        movieId={props.movie.id}
+        movieId={id}
       />
     </>
   );

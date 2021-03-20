@@ -25,7 +25,7 @@
   top: 0;
   right: 0;
   border: 1px solid #b4b3b3;
-  color: #818080;
+  color: #b4b3b3;
   font-size: 13px;
   line-height: 20px;
   padding: 0 10px;
@@ -35,8 +35,9 @@
 }
 
 .itemGenre {
-  color: #8b8b8b;
+  color: #a1a1a1;
   font-size: 16px;
+  margin-top: 7px;
 }
 
 .item h3 {

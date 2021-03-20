@@ -3,21 +3,25 @@ import PropTypes from 'prop-types';
 
 import Movie from './Movie/Movie';
 
-const MovieList = ({ moviesList }) => <>
+const MovieList = ({ moviesList }) => {
+  return (
+    <>
       {moviesList.map((movie) => (
         <Movie key={movie.id} movie={movie} />
       ))}
     </>
+  )
+}
 
 MovieList.propTypes = {
   moviesList: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      genre: PropTypes.array.isRequired,
+      genres: PropTypes.array.isRequired,
       date: PropTypes.string,
       src: PropTypes.string,
       overview: PropTypes.string,
-      runtime: PropTypes.string,
+      runtime: PropTypes.number,
       id: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number
@@ -25,5 +29,6 @@ MovieList.propTypes = {
     })
   )
 }
+
 
 export default MovieList;

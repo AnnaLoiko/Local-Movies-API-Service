@@ -15,8 +15,8 @@ import data from '@/data/data';
 
 const MovieEdit = (props) => {
   const { isOpen, clickCloseModal, movie } = props;
-  const [selectedGenre, setSelectedGenre] = useState([...movie.genre]);
-  const [startDate, setStartDate] = useState(new Date(movie.date));
+  const [selectedGenre, setSelectedGenre] = useState([...movie.genres]);
+  const [startDate, setStartDate] = useState(new Date(movie.release_date));
 
 
   return (
@@ -50,7 +50,7 @@ const MovieEdit = (props) => {
           type="text"
           label="Movie URL"
           placeholder="Movie URL here"
-          value={movie.src}
+          value={movie.poster_path}
         />
       </div>
 

@@ -13,7 +13,7 @@ const MovieFilter = (props) => {
       props.setCurrentMovies(props.moviesList);
       return;
     }
-    const fileredMovies = props.moviesList.filter(item => item.genre.includes(typeFilter))
+    const fileredMovies = props.moviesList.filter(item => item.genres.includes(typeFilter))
     props.setCurrentMovies(fileredMovies);
   }, [typeFilter])
 
