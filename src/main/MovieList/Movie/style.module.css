@@ -40,9 +40,10 @@
   margin-top: 7px;
 }
 
-.item h3 {
-  color: #aaaaaa;
-  font-size: 18px;
+.itemInfo h3 {
+  color: #dddddd;
+  font-size: 16px;
+  padding-right: 50px;
 }
 
 .dropDownWrap {

@@ -10,7 +10,7 @@ export const getMovies = (data = {}) => {
         limit: '15',
         filter: (data.filterActiveKey === 'All') ? '' : data.filterActiveKey,
         sortBy: data.sortActiveKey,
-        sortOrder: data.sortOrder,
+        sortOrder: data.sortOrder ? 'asc' : 'desc',
       },
     })
       .then(response => {
@@ -20,7 +20,7 @@ export const getMovies = (data = {}) => {
           payloadParams: {
             filterActiveKey: data.filterActiveKey || 'All',
             sortActiveKey: data.sortActiveKey || 'release_date',
-            sortOrder: (data.sortOrder === 'asc') ? 'desc' : 'asc',
+            sortOrder: data.sortOrder,
           }
         });
         dispatch({ type: ACTIONS.MOVIE_LOADER, payload: false });
@@ -35,7 +35,7 @@ export const getMovies = (data = {}) => {
 export const addMovie = (movie) => {
   return {
     type: ACTIONS.ADD_MOVIE,
-    payload: movie
+    payload: movie,
   }
 }
 

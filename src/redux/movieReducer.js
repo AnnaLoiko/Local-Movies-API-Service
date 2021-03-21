@@ -8,7 +8,7 @@ const initialState = {
   sortByKeys: [{ key: "release_date", title: "Release date" }, { key: "vote_average", title: "Rating" }],
   params: {
     filterActiveKey: "All",
-    sortOrder: 'desc',
+    sortOrder: false,
     sortActiveKey: "release_date",
   },
 }

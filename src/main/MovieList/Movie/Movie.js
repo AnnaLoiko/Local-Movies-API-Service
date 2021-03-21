@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import style from "./style.module";
 
 import PropTypes from 'prop-types';
@@ -11,38 +11,25 @@ import DropDownList from "@/components/DropDownList/DropDownList";
 const Movie = (props) => {
   const { poster_path, title, genres, release_date, id } = props.movie;
 
-  const [isShow, setIsShow] = useState(false);
+  const [isShowDropDown, setIsShowDropDown] = useState(false);
   const [isOpenEdit, setIsOpenEdit] = useState(false);
   const [isOpenDelete, setIsOpenDelete] = useState(false);
-
-  const escCloseDropDown = useCallback((event) =>{
-    if (event.keyCode === 27) {
-      setIsShow(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    document.addEventListener("keydown", escCloseDropDown, false);
-    return () => {
-      document.removeEventListener("keydown", escCloseDropDown, true);
-    };
-  }, [])
 
   const actions = [
     {
       label: 'Edit',
-      handleClick: function () { setIsOpenEdit(true); setIsShow(false) },
+      handleClick: () => { setIsOpenEdit(true); setIsShowDropDown(false) },
     },
     {
       label: 'Delete',
-      handleClick: function () { setIsOpenDelete(true); setIsShow(false) },
+      handleClick: () => { setIsOpenDelete(true); setIsShowDropDown(false) },
     },
   ];
 
   return (
     <>
       <div className={style.itemWrap}>
-        <span className={style.iconDropDown} onClick={() => setIsShow(true)}></span>
+        <span className={style.iconDropDown} onClick={() => setIsShowDropDown(true)}></span>
 
         <div className={style.itemImgWrap}>
           <img alt="" src={poster_path} />
@@ -56,23 +43,22 @@ const Movie = (props) => {
         
         <DropDownList
           items={actions}
-          isShow={isShow}
-          clickClose={() => setIsShow(false)}
-          escClose={escCloseDropDown}
+          isShow={isShowDropDown}
+          clickClose={() => setIsShowDropDown(false)}
         />
       </div>
 
       <MovieEdit
         title="Edit movie"
         isOpen={isOpenEdit}
-        clickCloseModal={() => { setIsOpenEdit(false) }}
+        clickCloseModal={() => setIsOpenEdit(false)}
         movie={props.movie}
       />
 
       <MovieDelete
         title="Delete movie"
         isOpen={isOpenDelete}
-        clickCloseModal={() => { setIsOpenDelete(false) }}
+        clickCloseModal={() => setIsOpenDelete(false)}
         movieId={id}
       />
     </>

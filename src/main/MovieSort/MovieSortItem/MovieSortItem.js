@@ -9,7 +9,7 @@ const MovieSortItem = (props) => {
 
   return (
     <li
-      className={`${style.itemDrop} ${isSelected && style.active} ${sortOrder === 'desc' && style.up}`}
+      className={`${style.itemDrop} ${isSelected && style.active} ${sortOrder && style.up}`}
       onClick={handleClick}
     >
       {title}
@@ -20,7 +20,7 @@ const MovieSortItem = (props) => {
 
 MovieSortItem.propTypes = {
   title: PropTypes.string,
-  sortOrder: PropTypes.string,
+  sortOrder: PropTypes.bool,
   isSelected: PropTypes.bool,
   handleClick: PropTypes.func,
 };
