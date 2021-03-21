@@ -3,12 +3,8 @@ import style from "./style.module";
 
 import PropTypes from 'prop-types';
 
-// import moviesList from "@/data/moviesList";
-
 
 const MovieDetails = (props) => {
-
-  // const {movie} = props;
   const movie = moviesList[0];
   return (
     <div className={style.wrap}>

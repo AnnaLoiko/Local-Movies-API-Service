@@ -9,7 +9,6 @@ import DropDownList from "@/components/DropDownList/DropDownList";
 
 
 const Movie = (props) => {
-  // console.log('props', props);
   const { poster_path, title, genres, release_date, id } = props.movie;
 
   const [isShow, setIsShow] = useState(false);

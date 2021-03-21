@@ -8,7 +8,7 @@ const FilterItem = (props) => {
 
   return (
     <li
-      className={`${style.filterItem} ${isSelected && style.active} `}
+      className={`${style.filterItem} ${isSelected && style.active}`}
       onClick={handleClick}
     >
       {title}

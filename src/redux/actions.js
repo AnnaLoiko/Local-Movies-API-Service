@@ -2,12 +2,27 @@ import axios from 'axios';
 import ACTIONS from "./actionTypes";
 
 
-export const getMovies = (filterKey = 'All') => {
+export const getMovies = (data = {}) => {
   return (dispatch) => {
     dispatch({ type: ACTIONS.MOVIE_LOADER, payload: true });
-    axios.get('http://localhost:4000/movies', { params: {filter: filterKey === 'All' ? '' : filterKey} })
+    axios.get('http://localhost:4000/movies', {
+      params: {
+        limit: '15',
+        filter: (data.filterActiveKey === 'All') ? '' : data.filterActiveKey,
+        sortBy: data.sortActiveKey,
+        sortOrder: data.sortOrder,
+      },
+    })
       .then(response => {
-        dispatch({ type: ACTIONS.GET_MOVIE_SUCCESS, payloadResponse: response.data, payload: filterKey });
+        dispatch({
+          type: ACTIONS.GET_MOVIE_SUCCESS,
+          payloadResponse: response.data,
+          payloadParams: {
+            filterActiveKey: data.filterActiveKey || 'All',
+            sortActiveKey: data.sortActiveKey || 'release_date',
+            sortOrder: (data.sortOrder === 'asc') ? 'desc' : 'asc',
+          }
+        });
         dispatch({ type: ACTIONS.MOVIE_LOADER, payload: false });
       })
       .catch((error) => {

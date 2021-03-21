@@ -4,8 +4,13 @@ const initialState = {
   movies: [],
   hasError: false,
   loader: false,
-  filterKeys: ["All",'Documentary','Comedy','Horror','Crime',],
-  activeFilter: "All",
+  filterKeys: ["All", 'Documentary', 'Comedy', 'Horror', 'Crime'],
+  sortByKeys: [{ key: "release_date", title: "Release date" }, { key: "vote_average", title: "Rating" }],
+  params: {
+    filterActiveKey: "All",
+    sortOrder: 'desc',
+    sortActiveKey: "release_date",
+  },
 }
 
 const movieReducer = (state = initialState, action) => {
@@ -20,7 +25,10 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         movies: action.payloadResponse.data,
-        activeFilter: action.payload,
+        params: {
+          ...state.params,
+          ...action.payloadParams,
+        },
         hasError: false,
       }
 
@@ -30,11 +38,19 @@ const movieReducer = (state = initialState, action) => {
         hasError: true,
       };
 
-    case 'ADD_MOVIE':
-      console.log('reducer ADD_MOVIE reducer', action.payload);
+    case ACTIONS.ADD_MOVIE_SUCCESS:
+      console.log('reducer ADD_MOVIE SUCCESS', action.payload);
       return {
         ...state,
-        movie: action.payload
+        movie: action.payload,
+        hasError: false,
+      }
+
+    case ACTIONS.ADD_MOVIE_ERROR:
+      console.log('reducer ADD_MOVIE ERROR reducer', action.payload);
+      return {
+        ...state,
+        hasError: true,
       }
 
     default:

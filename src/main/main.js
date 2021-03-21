@@ -12,15 +12,15 @@ import { getMovies } from "@/redux/actions";
 
 
 const Main = (props) => {
-  const {moviesList, getMovies, filterKeys, activeFilter, hasError, loader} = props;
+  const { moviesList, getMovies, filterKeys, sortByKeys, params, hasError, loader } = props;
 
   useEffect(() => { getMovies() }, []);
-  
+
   return (
     <>
       <div className={style.wrapNav}>
-        <MovieFilter getFilterMovies={getMovies} filterKeys={filterKeys} activeFilter={activeFilter} />
-        {/* <MovieSort moviesList={currentMovies} setCurrentMovies={setCurrentMovies} /> */}
+        <MovieFilter getFilterMovies={getMovies} filterKeys={filterKeys} params={params} />
+        <MovieSort getSortMovies={getMovies} sortByKeys={sortByKeys} params={params} />
       </div>
 
       <MovieCount count={moviesList.length} />
@@ -40,7 +40,8 @@ const mapStateToProps = state => {
     hasError: state.movies.hasError,
     loader: state.movies.loader,
     filterKeys: state.movies.filterKeys,
-    activeFilter: state.movies.activeFilter,
+    sortByKeys: state.movies.sortByKeys,
+    params: state.movies.params,
   }
 }
 

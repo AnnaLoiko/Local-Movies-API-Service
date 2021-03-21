@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import FilterItem from './FilterItem/FilterItem';
 
 const MovieFilter = (props) => {
-  const {getFilterMovies, filterKeys, activeFilter} = props;
+  const { filterKeys, params, getFilterMovies } = props;
 
   return (
     <ul>
@@ -12,8 +12,8 @@ const MovieFilter = (props) => {
         <FilterItem
           key={index}
           title={item}
-          isSelected={item === activeFilter}
-          handleClick={() => getFilterMovies(item)}
+          isSelected={item === params.filterActiveKey}
+          handleClick={() => getFilterMovies({ ...params, filterActiveKey: item })}
         />
       ))}
     </ul>
@@ -23,6 +23,7 @@ const MovieFilter = (props) => {
 
 MovieFilter.propTypes = {
   filterKeys: PropTypes.array,
+  params: PropTypes.object,
   getFilterMovies: PropTypes.func,
 };
 

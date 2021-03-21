@@ -1,18 +1,3 @@
-const sortOptions = [
-  {
-    title: "Relese Date",
-    key: "date",
-  },
-  {
-    title: "Title",
-    key: "title",
-  },
-  {
-    title: "Movie duration",
-    key: "duration",
-  }
-]
-
 const genreList = [
   'Documentary',
   'Horror',
@@ -29,6 +14,5 @@ const genreList = [
 ]
 
 export default {
-  sortOptions,
   genreList,
 };
