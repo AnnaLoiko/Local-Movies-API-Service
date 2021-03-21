@@ -1,46 +1,26 @@
 import axios from 'axios';
 import ACTIONS from "./actionTypes";
 
-export const getMovies = () => {
+
+export const getMovies = (filterKey = 'All') => {
   return (dispatch) => {
-    axios('http://localhost:4000/movies')
+    dispatch({ type: ACTIONS.MOVIE_LOADER, payload: true });
+    axios.get('http://localhost:4000/movies', { params: {filter: filterKey === 'All' ? '' : filterKey} })
       .then(response => {
-        console.log('response getMovies' , response.data);
-        dispatch({type: ACTIONS.GET_MOVIE, payload: response.data});
-      });
+        dispatch({ type: ACTIONS.GET_MOVIE_SUCCESS, payloadResponse: response.data, payload: filterKey });
+        dispatch({ type: ACTIONS.MOVIE_LOADER, payload: false });
+      })
+      .catch((error) => {
+        dispatch({ type: ACTIONS.GET_MOVIE_ERROR, payload: error });
+        dispatch({ type: ACTIONS.MOVIE_LOADER, payload: false });
+      })
   }
 }
 
 export const addMovie = (movie) => {
-  console.log('addMovie - payload - movie', movie);
   return {
-      type: ACTIONS.ADD_MOVIE,
-      payload: movie
+    type: ACTIONS.ADD_MOVIE,
+    payload: movie
   }
 }
-
-
-
-
-
-// export const getMoviesError = (bool) => {
-//   return {
-//       type: ACTIONS.GET_MOVIE_ERROR,
-//       hasError: bool
-//   };
-// }
-
-// export const getMoviesLoading = (bool) => {
-//   return {
-//       type: ACTIONS.GET_MOVIE_LOADING,
-//       isLoading: bool
-//   };
-// }
-
-// export const getMoviesSuccess = (items) => {
-//   return {
-//       type: ACTIONS.GET_MOVIE_SUCCESS,
-//       items
-//   };
-// }
 

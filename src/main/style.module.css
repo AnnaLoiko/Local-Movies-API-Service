@@ -1,13 +1,23 @@
 .wrapNav {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #424242;
-    box-shadow: 0px 1px 0px 0px #000;
-  }
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #424242;
+  box-shadow: 0px 1px 0px 0px #000;
+}
 
-  .movieListWrap {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    margin: 25px -25px;
-  }
+.movieListWrap {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 25px -25px;
+}
+
+.warningText {
+  text-align: center;
+  color: #F65261;
+  letter-spacing: .8px;
+  font-size: 30px;
+  font-weight: 600;
+  padding: 40px 0;
+  width: 100%;
+}

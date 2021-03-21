@@ -1,31 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from 'prop-types';
 
 import FilterItem from './FilterItem/FilterItem';
-import useUpdateEffect from '@/hooks/useUpdateEffect';
-import data from "@/data/data";
 
 const MovieFilter = (props) => {
-  const [typeFilter, setTypeFilter] = useState("All");
-
-  useUpdateEffect(() => {
-    if (typeFilter === "All") {
-      props.setCurrentMovies(props.moviesList);
-      return;
-    }
-    const fileredMovies = props.moviesList.filter(item => item.genres.includes(typeFilter))
-    props.setCurrentMovies(fileredMovies);
-  }, [typeFilter])
-
+  const {getFilterMovies, filterKeys, activeFilter} = props;
 
   return (
     <ul>
-      {data.filterOptions.map((item, index) => (
+      {filterKeys.map((item, index) => (
         <FilterItem
           key={index}
           title={item}
-          isSelected={item === typeFilter}
-          handleClick={() => setTypeFilter(item)}
+          isSelected={item === activeFilter}
+          handleClick={() => getFilterMovies(item)}
         />
       ))}
     </ul>
@@ -34,8 +22,8 @@ const MovieFilter = (props) => {
 
 
 MovieFilter.propTypes = {
-  moviesList: PropTypes.array,
-  setCurrentMovies: PropTypes.func,
+  filterKeys: PropTypes.array,
+  getFilterMovies: PropTypes.func,
 };
 
 export default MovieFilter;

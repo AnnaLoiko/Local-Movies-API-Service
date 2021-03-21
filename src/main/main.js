@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from 'react-redux';
 
 import style from "./style.module";
@@ -11,38 +11,36 @@ import MovieList from './MovieList/MovieList';
 import { getMovies } from "@/redux/actions";
 
 
-const Main = ({moviesList, getMovies}) => {
-  console.log('Main - moviesList', moviesList);
-  const [currentMovies, setCurrentMovies] = useState(moviesList);
+const Main = (props) => {
+  const {moviesList, getMovies, filterKeys, activeFilter, hasError, loader} = props;
 
-  useEffect(() => {
-    getMovies();
-  }, []);
-
-  useEffect(() => {
-    setCurrentMovies(moviesList);
-  }, [moviesList]);
+  useEffect(() => { getMovies() }, []);
   
   return (
     <>
       <div className={style.wrapNav}>
-        <MovieFilter moviesList={moviesList} setCurrentMovies={setCurrentMovies} />
-        <MovieSort moviesList={currentMovies} setCurrentMovies={setCurrentMovies} />
+        <MovieFilter getFilterMovies={getMovies} filterKeys={filterKeys} activeFilter={activeFilter} />
+        {/* <MovieSort moviesList={currentMovies} setCurrentMovies={setCurrentMovies} /> */}
       </div>
 
-      <MovieCount count={currentMovies.length} />
+      <MovieCount count={moviesList.length} />
 
       <main className={style.movieListWrap}>
-        <MovieList moviesList={currentMovies} />
+        {hasError && <p className={style.warningText}>Currently the server is unavailable. Please try later.</p>}
+        {loader && <p className={style.warningText}>Loading...</p>}
+        <MovieList moviesList={moviesList} />
       </main>
     </>
   );
 }
 
 const mapStateToProps = state => {
-  console.log('state', state);
   return {
     moviesList: state.movies.movies,
+    hasError: state.movies.hasError,
+    loader: state.movies.loader,
+    filterKeys: state.movies.filterKeys,
+    activeFilter: state.movies.activeFilter,
   }
 }
 

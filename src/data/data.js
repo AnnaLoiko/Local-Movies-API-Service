@@ -1,11 +1,3 @@
-const filterOptions = [
-  "All",
-  'Documentary',
-  'Comedy',
-  'Horror',
-  'Crime',
-]
-
 const sortOptions = [
   {
     title: "Relese Date",
@@ -23,13 +15,20 @@ const sortOptions = [
 
 const genreList = [
   'Documentary',
-  'Comedy',
   'Horror',
   'Crime',
+  'Animation',
+  'Adventure',
+  'Family',
+  'Comedy',
+  'Drama',
+  'Romance',
+  'Fantasy',
+  'Adventure',
+  'Science Fiction',
 ]
 
 export default {
-  filterOptions,
   sortOptions,
   genreList,
 };
