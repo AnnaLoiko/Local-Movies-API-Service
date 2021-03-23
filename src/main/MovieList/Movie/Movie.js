@@ -9,13 +9,16 @@ import DropDownList from "@/components/DropDownList/DropDownList";
 
 
 const Movie = (props) => {
-  const { poster_path, title, genres, release_date, id } = props.movie;
+  const { poster_path, title, genres = [], release_date = "Year", id } = props.movie;
 
   const [isShowDropDown, setIsShowDropDown] = useState(false);
   const [isOpenEdit, setIsOpenEdit] = useState(false);
   const [isOpenDelete, setIsOpenDelete] = useState(false);
 
-  const actions = [
+  const gernesStr = genres.length > 1 ? genres.join(", ") : genres;
+  const releaseDate = new Date(release_date).getFullYear();
+
+  const listDropDown = [
     {
       label: 'Edit',
       handleClick: () => { setIsOpenEdit(true); setIsShowDropDown(false) },
@@ -37,26 +40,24 @@ const Movie = (props) => {
 
         <div className={style.itemInfo}>
           <h3>{title}</h3>
-          <p className={style.itemGenre}>{[...genres].join(", ")}</p>
-          <span className={style.itemData}>{new Date(release_date).getFullYear() || "Year"}</span>
+          <p className={style.itemGenre}>{gernesStr}</p>
+          <span className={style.itemData}>{releaseDate}</span>
         </div>
-        
+
         <DropDownList
-          items={actions}
+          items={listDropDown}
           isShow={isShowDropDown}
           clickClose={() => setIsShowDropDown(false)}
         />
       </div>
 
       <MovieEdit
-        title="Edit movie"
         isOpen={isOpenEdit}
         clickCloseModal={() => setIsOpenEdit(false)}
         movie={props.movie}
       />
 
       <MovieDelete
-        title="Delete movie"
         isOpen={isOpenDelete}
         clickCloseModal={() => setIsOpenDelete(false)}
         movieId={id}
@@ -66,7 +67,13 @@ const Movie = (props) => {
 };
 
 Movie.propTypes = {
-  movie: PropTypes.object,
-};
+  title: PropTypes.string,
+  genres: PropTypes.array,
+  release_date: PropTypes.string,
+  poster_path: PropTypes.string,
+  overview: PropTypes.string,
+  runtime: PropTypes.number,
+  id: PropTypes.number,
+}
 
 export default Movie;

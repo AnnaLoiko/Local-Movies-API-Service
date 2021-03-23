@@ -11,12 +11,14 @@ const Input = (props) => <>
     placeholder={props.placeholder}
     value={props.value}
     title={props.title}
+    disable={props.disable}
     onChange={props.handleInputChange}
   />
 </>
 
 
 Input.propTypes = {
+  className: PropTypes.string,
   type: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.oneOfType([

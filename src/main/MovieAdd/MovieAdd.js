@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-// import { addMovie } from "@/redux/action";
 
 import style from "./style.module.css";
 
@@ -15,31 +14,42 @@ import Input from '@/components/Input/Input';
 import MultiSelect from '@/components/MultiSelect/MultiSelect';
 
 import { addMovie } from "@/redux/actions";
-import data from '@/data/data';
+
 
 const MovieAdd = (props) => {
-  // console.log('MovieAdd', props);
-  const { isOpen, clickCloseModal } = props;
+  const { isOpen, genresList, clickCloseModal, addMovie } = props;
+
   const [selectedGenre, setSelectedGenre] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
-  
   const [title, setTitle] = useState('');
+  const [runtime, setRuntime] = useState('');
+  const [posterPath, setPosterPath] = useState('');
+  const [overview, setOverview] = useState('');
 
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const newMovie = {
-      title: title,
-      id: Date.now().toString(),
-    }
-    console.log('newMovie', newMovie)
-    props.addMovie(newMovie);
-    setTitle('');
-  }
 
-  const handleInputChange = (event) => {
-    setTitle(event.target.value)
-  };
+    const newMovie = {
+      "title": title,
+      "release_date": "2021-03-23",
+      // "poster_path": posterPath,
+      "poster_path": "https://thumbs.dfs.ivi.ru/storage23/contents/7/4/f6e314316d19ec466cba15d66de6df.jpg",
+      "overview": overview,
+      "runtime": runtime,
+      "genres": [
+        "Drama",
+      ],
+    };
+
+    addMovie(newMovie);
+
+    setTitle('');
+    setPosterPath('');
+    setRuntime('');
+    setOverview('');
+    setSelectedGenre([]);
+  }
 
   return (
     <Modal
@@ -56,7 +66,7 @@ const MovieAdd = (props) => {
             placeholder="Title"
             id="title"
             value={title}
-            handleInputChange={handleInputChange}
+            handleInputChange={event => setTitle(event.target.value)}
           />
         </div>
 
@@ -75,6 +85,10 @@ const MovieAdd = (props) => {
             type="text"
             label="Movie URL"
             placeholder="Movie URL here"
+            id="poster_path"
+            value={posterPath}
+            handleInputChange={event => setPosterPath(event.target.value)}
+            disable="disable"
           />
         </div>
 
@@ -82,7 +96,7 @@ const MovieAdd = (props) => {
           <MultiSelect
             label="Genre"
             placeholder="Select genre"
-            items={data.genreList}
+            items={genresList}
             selectedItems={selectedGenre}
             handleChange={value => setSelectedGenre(value)}
           />
@@ -93,6 +107,9 @@ const MovieAdd = (props) => {
             type="text"
             label="Overview"
             placeholder="Overview here"
+            id="overview"
+            value={overview}
+            handleInputChange={event => setOverview(event.target.value)}
           />
         </div>
 
@@ -101,12 +118,15 @@ const MovieAdd = (props) => {
             type="text"
             label="Runtime"
             placeholder="Runtime here"
+            id="Runtime"
+            value={runtime}
+            handleInputChange={event => setRuntime(+event.target.value)}
           />
         </div>
 
         <div className={style.btnWrap}>
-          <Button text="Reset" className="btnPrimaryInvert" />
-          <Button text="Submit" className="btnPrimary" />
+          <Button type="reset" text="Reset" className="btnPrimaryInvert" />
+          <Button type="submit" text="Submit" className="btnPrimary" />
         </div>
 
       </form>
@@ -116,20 +136,20 @@ const MovieAdd = (props) => {
 
 
 MovieAdd.propTypes = {
-  title: PropTypes.string,
   isOpen: PropTypes.bool,
+  genresList: PropTypes.array,
   clickCloseModal: PropTypes.func,
-  movie: PropTypes.object,
+  addMovie: PropTypes.func,
 };
 
-// const mapStateToProps = state => {
-//   console.log('state', state);
-//   return {
-//     moviesList: state.movies,
-//   }
-// }
+
+const mapStateToProps = state => {
+  return {
+    genresList: state.movies.genresList,
+  }
+}
 
 const mapDispatchToProps = {
   addMovie
 }
-export default connect(null, mapDispatchToProps)(MovieAdd);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieAdd);

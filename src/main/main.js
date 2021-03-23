@@ -12,7 +12,9 @@ import { getMovies } from "@/redux/actions";
 
 
 const Main = (props) => {
-  const { moviesList, getMovies, filterKeys, sortByKeys, params, hasError, loader } = props;
+  const { moviesList, getMovies, filterKeys, sortByKeys, params, errorGetMovie, loader } = props;
+
+  console.log('moviesList', props)
 
   useEffect(() => { getMovies() }, []);
 
@@ -26,7 +28,7 @@ const Main = (props) => {
       <MovieCount count={moviesList.length} />
 
       <main className={style.movieListWrap}>
-        {hasError && <p className={style.warningText}>Currently the server is unavailable. Please try later.</p>}
+        {errorGetMovie && <p className={style.warningText}>Currently the server is unavailable. Please try later.</p>}
         {loader && <p className={style.warningText}>Loading...</p>}
         <MovieList moviesList={moviesList} />
       </main>
@@ -35,9 +37,10 @@ const Main = (props) => {
 }
 
 const mapStateToProps = state => {
+  console.log('state, state________________' , state);
   return {
     moviesList: state.movies.movies,
-    hasError: state.movies.hasError,
+    errorGetMovie: state.movies.errorGetMovie,
     loader: state.movies.loader,
     filterKeys: state.movies.filterKeys,
     sortByKeys: state.movies.sortByKeys,

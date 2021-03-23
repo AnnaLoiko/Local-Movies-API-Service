@@ -12,7 +12,7 @@ const MovieCount = ({ count }) => {
 }
 
 MovieCount.propTypes = {
-  count: PropTypes.number
+  // count: PropTypes.string
 };
 
 MovieCount.defaultProps = {

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Movie from './Movie/Movie';
 
 const MovieList = ({ moviesList }) => {
+  console.log('moviesList', moviesList);
   return (
     <>
       {moviesList.map((movie) => (
@@ -13,22 +14,9 @@ const MovieList = ({ moviesList }) => {
   )
 }
 
-MovieList.propTypes = {
-  moviesList: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      genres: PropTypes.array.isRequired,
-      date: PropTypes.string,
-      src: PropTypes.string,
-      overview: PropTypes.string,
-      runtime: PropTypes.number,
-      id: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number
-      ])
-    })
-  )
-}
 
+// MovieList.propTypes = {
+//   moviesList: PropTypes.array
+// }
 
 export default MovieList;
