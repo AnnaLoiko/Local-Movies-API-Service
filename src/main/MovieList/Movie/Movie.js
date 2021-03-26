@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from 'react-redux';
 import style from "./style.module";
 
 import PropTypes from 'prop-types';
@@ -7,16 +8,19 @@ import MovieEdit from "@/main/MovieEdit/MovieEdit";
 import MovieDelete from "@/main/MovieDelete/MovieDelete";
 import DropDownList from "@/components/DropDownList/DropDownList";
 
+import { getMovieById, deleteMovie } from '@/redux/actions';
+
 
 const Movie = (props) => {
-  const { poster_path, title, genres = [], release_date = "Year", id } = props.movie;
+  const { getMovieById} = props;
+  const { id, title = "Movie title", release_date, poster_path, genres = [] } = props.movie;
 
   const [isShowDropDown, setIsShowDropDown] = useState(false);
   const [isOpenEdit, setIsOpenEdit] = useState(false);
   const [isOpenDelete, setIsOpenDelete] = useState(false);
 
   const gernesStr = genres.length > 1 ? genres.join(", ") : genres;
-  const releaseDate = new Date(release_date).getFullYear();
+  const releaseDate = release_date ? new Date(release_date).getFullYear() : 'Year';
 
   const listDropDown = [
     {
@@ -29,13 +33,19 @@ const Movie = (props) => {
     },
   ];
 
+
   return (
     <>
       <div className={style.itemWrap}>
         <span className={style.iconDropDown} onClick={() => setIsShowDropDown(true)}></span>
 
         <div className={style.itemImgWrap}>
-          <img alt="" src={poster_path} />
+            <img
+              alt=""
+              src={poster_path}
+              title="Get movie details"
+              onClick={() => getMovieById(id)}
+            />
         </div>
 
         <div className={style.itemInfo}>
@@ -76,4 +86,10 @@ Movie.propTypes = {
   id: PropTypes.number,
 }
 
-export default Movie;
+
+const mapDispatchToProps = {
+  getMovieById,
+  deleteMovie
+}
+
+export default connect(null, mapDispatchToProps)(Movie);

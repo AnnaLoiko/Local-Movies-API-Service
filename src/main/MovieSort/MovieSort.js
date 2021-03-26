@@ -8,17 +8,19 @@ import useToggle from '@/hooks/useToggle';
 
 const MovieSort = (props) => {
   const { sortByKeys, params, getSortMovies } = props;
-
+  
   const [isChecked, toggleCheck] = useToggle(false);
   const [currentTitle, setCurrentTitle] = useState('Relese date');
+  const [currentSortOrder, setCurrentSortOrder] = useState(params.sortOrder || '');
+
 
   return (
     <div
-      className={`${style.selectWrap} ${params.sortOrder && style.up}`}
+      className={`${style.selectWrap} ${currentSortOrder === "asc" && style.up}`}
       onClick={toggleCheck}
     >
       <h4 className={style.label}>Sort by</h4>
-      <div className={style.selected}>{currentTitle}</div>
+      <div className={style.selected}>{currentTitle || "Release date"}</div>
 
       <div className={`${!isChecked && style.hide} ${style.dropDownListWrap}`}>
         <ul className={style.dropDownList}>
@@ -26,14 +28,15 @@ const MovieSort = (props) => {
             <MovieSortItem
               key={index}
               title={item.title}
-              isSelected={item.key === params.sortActiveKey}
-              sortOrder={params.sortOrder}
+              isSelected={item.isSelected}
+              sortOrder={item.sortOrder}
               handleClick={() => { 
                 setCurrentTitle(item.title)
+                setCurrentSortOrder(item.sortOrder)
                 getSortMovies({ 
                   ...params, 
                   sortActiveKey: item.key, 
-                  sortOrder: !params.sortOrder 
+                  sortOrder: item.sortOrder
                 });
               }}
             />

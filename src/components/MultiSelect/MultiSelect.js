@@ -35,7 +35,7 @@ const MultiSelect = (props) => {
             <input
               type="checkbox"
               className={style.checkbox}
-              id={item}
+              id={`${item}_${index}`}
               name={item}
               checked={selectedItems.includes(item)}
               onChange={() => { handleChangeSelected(!selectedItems.includes(item), item); }}

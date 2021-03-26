@@ -3,29 +3,40 @@ import style from "./style.module";
 
 import PropTypes from 'prop-types';
 
-const Input = (props) => <>
-  {props.label && <label className={style.label}>{props.label}</label>}
-  <input
-    className={style.input}
-    type={props.type}
-    placeholder={props.placeholder}
-    value={props.value}
-    title={props.title}
-    disable={props.disable}
-    onChange={props.handleInputChange}
-  />
-</>
+
+const Input = (props) => {
+  const {id, label, type, placeholder, value, title, disabled = false, handleInputChange} = props;
+
+  return (
+    <>
+      {label && <label className={style.label}>{label}</label>}
+      <input
+        id={id}
+        className={style.input}
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        title={title}
+        disabled={disabled}
+        onChange={handleInputChange}
+      />
+    </>
+  )
+};
 
 
 Input.propTypes = {
-  className: PropTypes.string,
+  label: PropTypes.string,
   type: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number
   ]),
-  onChange: PropTypes.func,
+  title: PropTypes.string,
+  disabled: PropTypes.bool,
+  className: PropTypes.string,
+  handleInputChange: PropTypes.func,
 };
 
 export default Input;

@@ -14,8 +14,6 @@ import { getMovies } from "@/redux/actions";
 const Main = (props) => {
   const { moviesList, getMovies, filterKeys, sortByKeys, params, errorGetMovie, loader } = props;
 
-  console.log('moviesList', props)
-
   useEffect(() => { getMovies() }, []);
 
   return (
@@ -37,7 +35,6 @@ const Main = (props) => {
 }
 
 const mapStateToProps = state => {
-  console.log('state, state________________' , state);
   return {
     moviesList: state.movies.movies,
     errorGetMovie: state.movies.errorGetMovie,

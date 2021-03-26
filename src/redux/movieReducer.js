@@ -2,19 +2,25 @@ import ACTIONS from "./actionTypes";
 
 const initialState = {
   movies: [],
-  loader: false,
-  filterKeys: ["All", 'Documentary', 'Comedy', 'Horror', 'Crime'],
-  sortByKeys: [{ key: "release_date", title: "Release date" }, { key: "vote_average", title: "Rating" }],
+  currentMovie: {},
   params: {
     filterActiveKey: "All",
-    sortOrder: false,
     sortActiveKey: "release_date",
+    sortOrder: '',
   },
-  genresList: ['Documentary', 'Comedy', 'Horror', 'Crime','Animation','Adventure','Family','Drama','Romance','Fantasy','Adventure','Science Fiction'],
+  filterKeys: ["All", 'Documentary', 'Comedy', 'Horror', 'Crime'],
+  sortByKeys: [
+    { key: "release_date", title: "Release date", sortOrder: "desc", isSelected: false },
+    { key: "release_date", title: "Release date", sortOrder: "asc", isSelected: false },
+    { key: "vote_average", title: "Rating", sortOrder: "desc", isSelected: false },
+  ],
+  genresList: ['Documentary', 'Comedy', 'Horror', 'Crime', 'Animation', 'Adventure', 'Family', 'Drama', 'Romance', 'Fantasy', 'Adventure', 'Science Fiction'],
+  loader: false,
   errorGetMovie: false,
   errorAddMovie: false,
   errorEditMovie: false,
   errorDeleteMovie: false,
+  errorGetMovieById: false,
 }
 
 const movieReducer = (state = initialState, action) => {
@@ -44,7 +50,6 @@ const movieReducer = (state = initialState, action) => {
       };
 
     case ACTIONS.DELETE_MOVIE_SUCCESS:
-      console.log('reducer DELETE_MOVIE SUCCESS', action.payload);
       return {
         ...state,
         movies: state.movies.filter(item => item.id !== action.payload),
@@ -74,15 +79,13 @@ const movieReducer = (state = initialState, action) => {
       };
 
     case ACTIONS.EDIT_MOVIE_SUCCESS:
-      console.log('item.id ===',  state.movies)
-      console.log('action.payloadId ===', action.payloadId)
       return {
         ...state,
         movies: state.movies.map(
-          item => 
-            item.id === action.payloadId
-            ? { ...item, ...action.payloadResponse, ...action.payloadId }
-            : item
+          item =>
+            item.id === action.payload.id
+              ? { ...item, ...action.payload }
+              : item
         ),
         errorEditMovie: false,
       };
@@ -91,6 +94,19 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         errorEditMovie: true,
+      };
+
+    case ACTIONS.GET_MOVIE_BY_ID_SUCCESS:
+      return {
+        ...state,
+        currentMovie: {...action.payload},
+        errorGetMovieById: false,
+      };
+
+    case ACTIONS.GET_MOVIE_BY_ID_ERROR:
+      return {
+        ...state,
+        errorGetMovieById: true,
       };
 
     default:

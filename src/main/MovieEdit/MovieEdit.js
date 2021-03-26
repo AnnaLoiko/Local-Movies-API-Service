@@ -18,7 +18,7 @@ import { editMovie } from "@/redux/actions";
 
 const MovieEdit = (props) => {
   const { isOpen, genresList, clickCloseModal, editMovie, movie } = props;
-
+  
   const [selectedGenre, setSelectedGenre] = useState(movie.genres);
   const [startDate, setStartDate] = useState(new Date(movie.release_date));
   const [title, setTitle] = useState(movie.title);
@@ -26,11 +26,11 @@ const MovieEdit = (props) => {
   const [posterPath, setPosterPath] = useState(movie.poster_path);
   const [overview, setOverview] = useState(movie.overview);
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    
     const editedMovie = {
+      "id": movie.id,
       "title": title,
       "release_date": startDate,
       "poster_path": posterPath,

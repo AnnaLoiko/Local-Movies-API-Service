@@ -7,9 +7,11 @@ import PropTypes from 'prop-types';
 const MovieSortItem = (props) => {
   const { title, isSelected, sortOrder, handleClick } = props;
 
+  const styleArrow = (sortOrder === "asc" ? style.up : style.down);
+
   return (
     <li
-      className={`${style.itemDrop} ${isSelected && style.active} ${sortOrder && style.up}`}
+      className={`${style.itemDrop} ${isSelected && style.active} ${styleArrow}`}
       onClick={handleClick}
     >
       {title}
@@ -20,7 +22,7 @@ const MovieSortItem = (props) => {
 
 MovieSortItem.propTypes = {
   title: PropTypes.string,
-  sortOrder: PropTypes.bool,
+  sortOrder: PropTypes.string,
   isSelected: PropTypes.bool,
   handleClick: PropTypes.func,
 };

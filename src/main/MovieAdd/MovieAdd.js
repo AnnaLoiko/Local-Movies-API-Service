@@ -20,9 +20,9 @@ const MovieAdd = (props) => {
   const { isOpen, genresList, clickCloseModal, addMovie } = props;
 
   const [selectedGenre, setSelectedGenre] = useState([]);
-  const [startDate, setStartDate] = useState(new Date());
+  const [date, setDate] = useState(new Date());
   const [title, setTitle] = useState('');
-  const [runtime, setRuntime] = useState('');
+  const [runtime, setRuntime] = useState();
   const [posterPath, setPosterPath] = useState('');
   const [overview, setOverview] = useState('');
 
@@ -30,17 +30,29 @@ const MovieAdd = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // const newMovie = {
+    //   "title": title,
+    //   "release_date": date,
+    //   "poster_path": posterPath,
+    //   "overview": overview,
+    //   "runtime": runtime,
+    //   "genres": [
+    //     "Drama",
+    //   ],
+    // };
+
     const newMovie = {
-      "title": title,
-      "release_date": "2021-03-23",
-      // "poster_path": posterPath,
-      "poster_path": "https://thumbs.dfs.ivi.ru/storage23/contents/7/4/f6e314316d19ec466cba15d66de6df.jpg",
-      "overview": overview,
-      "runtime": runtime,
+      "title": title || 'Some title',
+      "release_date": date || "2021-03-23",
+      "poster_path": posterPath || 'https://proprikol.ru/wp-content/uploads/2020/07/kartinki-znak-voprosa-4.jpg',
+      "overview": overview || 'Some overview',
+      "runtime": runtime || 12,
       "genres": [
         "Drama",
       ],
     };
+
+    console.log("ACTION addMovie=========" , newMovie);
 
     addMovie(newMovie);
 
@@ -62,9 +74,9 @@ const MovieAdd = (props) => {
         <div className={style.item}>
           <Input
             type="text"
+            id="title"
             label="Title"
             placeholder="Title"
-            id="title"
             value={title}
             handleInputChange={event => setTitle(event.target.value)}
           />
@@ -74,8 +86,8 @@ const MovieAdd = (props) => {
           <label className={style.label}>Releze data</label>
           <div className={style.itemDate}>
             <DatePicker
-              selected={startDate}
-              onChange={date => setStartDate(date)}
+              selected={date}
+              onChange={date => setDate(date)}
             />
           </div>
         </div>
@@ -83,12 +95,11 @@ const MovieAdd = (props) => {
         <div className={style.item}>
           <Input
             type="text"
+            id="poster_path"
             label="Movie URL"
             placeholder="Movie URL here"
-            id="poster_path"
             value={posterPath}
             handleInputChange={event => setPosterPath(event.target.value)}
-            disable="disable"
           />
         </div>
 
@@ -105,9 +116,9 @@ const MovieAdd = (props) => {
         <div className={style.item}>
           <Input
             type="text"
+            id="overview"
             label="Overview"
             placeholder="Overview here"
-            id="overview"
             value={overview}
             handleInputChange={event => setOverview(event.target.value)}
           />
@@ -115,10 +126,10 @@ const MovieAdd = (props) => {
 
         <div className={style.item}>
           <Input
-            type="text"
+            type="number"
+            id="Runtime"
             label="Runtime"
             placeholder="Runtime here"
-            id="Runtime"
             value={runtime}
             handleInputChange={event => setRuntime(+event.target.value)}
           />

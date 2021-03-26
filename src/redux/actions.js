@@ -7,13 +7,13 @@ export const getMovies = (data = {}) => {
     dispatch({ type: ACTIONS.MOVIE_LOADER, payload: true });
 
     axios({
-      method: 'get',
+      method: 'GET',
       url: 'http://localhost:4000/movies',
       params: {
         limit: '20',
         filter: (data.filterActiveKey === 'All') ? '' : data.filterActiveKey,
         sortBy: data.sortActiveKey,
-        sortOrder: data.sortOrder ? 'asc' : 'desc',
+        sortOrder: data.sortOrder,
       },
     })
       .then(response => {
@@ -38,7 +38,7 @@ export const getMovies = (data = {}) => {
 export const addMovie = (newMovie) => {
   return (dispatch) => {
     axios({
-      method: 'post',
+      method: 'POST',
       url: 'http://localhost:4000/movies',
       data: newMovie,
     })
@@ -54,19 +54,17 @@ export const addMovie = (newMovie) => {
   }
 };
 
-export const editMovie = (editedMovie, id) => {
-  console.log('-----------', editedMovie, id);
+export const editMovie = (editedMovie) => {
   return (dispatch) => {
     axios({
-      method: 'post',
+      method: 'PUT',
       url: 'http://localhost:4000/movies',
       data: editedMovie,
     })
-    .then(response => {
+      .then(response => {
         dispatch({
           type: ACTIONS.EDIT_MOVIE_SUCCESS,
-          payloadResponse: response.data,
-          payloadId: id,
+          payload: response.data,
         });
         dispatch({ type: ACTIONS.MOVIE_LOADER, payload: false });
       })
@@ -79,7 +77,7 @@ export const editMovie = (editedMovie, id) => {
 export const deleteMovie = (movieId) => {
   return (dispatch) => {
     axios({
-      method: 'delete',
+      method: 'DELETE',
       url: `http://localhost:4000/movies/${movieId}`,
       params: {
         id: movieId,
@@ -93,6 +91,27 @@ export const deleteMovie = (movieId) => {
       })
       .catch((error) => {
         dispatch({ type: ACTIONS.DELETE_MOVIE_ERROR, payload: error });
+      })
+  }
+};
+
+export const getMovieById = (movieId) => {
+  return (dispatch) => {
+    axios({
+      method: 'GET',
+      url: `http://localhost:4000/movies/${movieId}`,
+      params: {
+        id: movieId,
+      },
+    })
+      .then((response) => {
+        dispatch({
+          type: ACTIONS.GET_MOVIE_BY_ID_SUCCESS,
+          payload: response.data,
+        });
+      })
+      .catch((error) => {
+        dispatch({ type: ACTIONS.GET_MOVIE_BY_ID_ERROR, payload: error});
       })
   }
 };
