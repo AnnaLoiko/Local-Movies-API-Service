@@ -10,7 +10,7 @@ import Modal from '@/components/Modal/Modal';
 import { deleteMovie } from "@/redux/actions";
 
 const MovieDelete = (props) => {
-  const { isOpen, clickCloseModal, deleteMovie, movieId, movie } = props;
+  const { isOpen, clickCloseModal, deleteMovie, movieId } = props;
 
   return (
     <Modal
@@ -24,7 +24,7 @@ const MovieDelete = (props) => {
         <Button
           text="Confirm"
           className="btnPrimary"
-          handleClick={() => deleteMovie(movieId, movie)}
+          handleClick={() => deleteMovie(movieId)}
         />
       </div>
     </Modal>
@@ -35,10 +35,8 @@ const MovieDelete = (props) => {
 MovieDelete.propTypes = {
   isOpen: PropTypes.bool,
   clickCloseModal: PropTypes.func,
-  movieID: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ])
+  movieId: PropTypes.number,
+  deleteMovie: PropTypes.func,
 };
 
 

@@ -83,8 +83,7 @@ export const deleteMovie = (movieId) => {
         id: movieId,
       },
     })
-      .then(response => {
-        console.log('response', response);
+      .then(() => {
         dispatch({
           type: ACTIONS.DELETE_MOVIE_SUCCESS,
           payload: movieId,

@@ -47,6 +47,7 @@ const MovieAdd = (props) => {
       "poster_path": posterPath || 'https://chto-takoe-lyubov.net/wp-content/uploads/2020/10/Risunki-Medved-2.jpg',
       "overview": overview || 'Some overview',
       "runtime": runTime || 12,
+      // "genres": selectedGenre,
       "genres": [
         "Drama",
       ],

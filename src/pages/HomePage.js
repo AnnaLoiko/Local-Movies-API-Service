@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import style from "./style.module";
 
 import MovieAdd from '@/main/MovieAdd/MovieAdd';
-// import MovieSuccessAdd from '@/main/MovieAdd/MovieSuccessAdd';
 
 import Search from "@/components/Search/Search";
 import Button from "@/components/Button/Button";
@@ -41,11 +40,6 @@ const HomePage = (props) => {
         isOpen={openModal}
         clickCloseModal={() => { postMessage(false), setOpenModal(false)} }
       />
-
-      {/* <MovieSuccessAdd
-        isOpen={openModal}
-        clickCloseModal={() => setOpenModal(false)}
-      /> */}
     </>
   );
 }
@@ -55,4 +49,3 @@ const mapDispatchToProps = {
   postMessage
 }
 export default connect(null, mapDispatchToProps)(HomePage);
-// export default HomePage;

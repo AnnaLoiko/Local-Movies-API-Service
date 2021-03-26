@@ -23,7 +23,6 @@ const MovieDetails = (props) => {
   
   useEffect(() => { getMovieById(id || 181808) }, [id]);
 
-  
   return (
 
     <div className={style.wrap}>
