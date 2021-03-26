@@ -3577,6 +3577,7 @@ var MovieEdit = function MovieEdit(props) {
       "runtime": runTime
     };
     editMovie(editedMovie);
+    clickCloseModal();
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Modal_Modal__WEBPACK_IMPORTED_MODULE_6__.default, {
@@ -55894,7 +55895,7 @@ module.exports = warning;
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("2184ba9e0350d5176877")
+/******/ 		__webpack_require__.h = () => ("8d4f393bbf6fdf63d397")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
