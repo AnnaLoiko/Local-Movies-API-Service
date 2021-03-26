@@ -1,12 +1,19 @@
-import React, {useState, useCallback} from "react";
+import React, { useState, useCallback } from "react";
+import { connect } from "react-redux";
 import style from "./style.module";
 
 import MovieAdd from '@/main/MovieAdd/MovieAdd';
+// import MovieSuccessAdd from '@/main/MovieAdd/MovieSuccessAdd';
+
 import Search from "@/components/Search/Search";
 import Button from "@/components/Button/Button";
 import Layout from "@/components/Layout/Layout";
 
-const HomePage = () => {
+import { postMessage } from "@/redux/actions";
+
+
+const HomePage = (props) => {
+  const {postMessage} = props;
   const [openModal, setOpenModal] = useState(false);
 
   const handleClick = useCallback(() => {
@@ -31,12 +38,21 @@ const HomePage = () => {
       </Layout>
 
       <MovieAdd
-        title="Add movie"
+        isOpen={openModal}
+        clickCloseModal={() => { postMessage(false), setOpenModal(false)} }
+      />
+
+      {/* <MovieSuccessAdd
         isOpen={openModal}
         clickCloseModal={() => setOpenModal(false)}
-      />
+      /> */}
     </>
   );
 }
 
-export default HomePage;
+
+const mapDispatchToProps = {
+  postMessage
+}
+export default connect(null, mapDispatchToProps)(HomePage);
+// export default HomePage;

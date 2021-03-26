@@ -12,7 +12,7 @@ import { getMovieById, deleteMovie } from '@/redux/actions';
 
 
 const Movie = (props) => {
-  const { getMovieById} = props;
+  const { getMovieById } = props;
   const { id, title = "Movie title", release_date, poster_path, genres = [] } = props.movie;
 
   const [isShowDropDown, setIsShowDropDown] = useState(false);
@@ -71,25 +71,24 @@ const Movie = (props) => {
         isOpen={isOpenDelete}
         clickCloseModal={() => setIsOpenDelete(false)}
         movieId={id}
+        movie={props.movie}
       />
     </>
   );
 };
 
 Movie.propTypes = {
+  id: PropTypes.number,
   title: PropTypes.string,
   genres: PropTypes.array,
   release_date: PropTypes.string,
   poster_path: PropTypes.string,
-  overview: PropTypes.string,
-  runtime: PropTypes.number,
-  id: PropTypes.number,
 }
 
 
 const mapDispatchToProps = {
   getMovieById,
-  deleteMovie
+  deleteMovie,
 }
 
 export default connect(null, mapDispatchToProps)(Movie);

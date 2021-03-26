@@ -16,15 +16,16 @@
     display: none;
 }
 
-.dropDownList .itemDrop {
+.dropDownList .item {
     padding: 3px 14px;
     text-align: left;
     color: #ffffff;
     cursor: pointer;
     margin-bottom: 8px;
+    user-select: none;
 }
 
-.dropDownList .itemDrop:hover, .dropDownList .itemDrop.active {
+.dropDownList .item:hover, .dropDownList .item.active {
     background-color: #F65261;
 }
 

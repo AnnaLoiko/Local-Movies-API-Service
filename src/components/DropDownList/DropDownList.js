@@ -28,7 +28,7 @@ const DropDownList = (props) => {
         {items.map((item, index) => (
           <div
             key={index}
-            className={`${item.isSelected && style.active} ${style.itemDrop}`}
+            className={`${item.isSelected && style.active} ${style.item}`}
             onClick={item.handleClick}
           >
             {item.label}

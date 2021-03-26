@@ -21,6 +21,7 @@ const initialState = {
   errorEditMovie: false,
   errorDeleteMovie: false,
   errorGetMovieById: false,
+  messageAddMovieSucc: false,
 }
 
 const movieReducer = (state = initialState, action) => {
@@ -66,10 +67,17 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         movies: [
-          { ...action.payload, id: Date.now() },
+          { ...action.payload},
           ...state.movies
         ],
         errorAddMovie: false,
+        messageAddMovieSucc: true,
+      };
+
+    case ACTIONS.PUT_MESSAGE_ADD_MOVIE_SUCCESS:
+      return {
+        ...state,
+        messageAddMovieSucc: action.payload,
       };
 
     case ACTIONS.ADD_MOVIE_ERROR:
@@ -99,7 +107,7 @@ const movieReducer = (state = initialState, action) => {
     case ACTIONS.GET_MOVIE_BY_ID_SUCCESS:
       return {
         ...state,
-        currentMovie: {...action.payload},
+        currentMovie: { ...action.payload },
         errorGetMovieById: false,
       };
 

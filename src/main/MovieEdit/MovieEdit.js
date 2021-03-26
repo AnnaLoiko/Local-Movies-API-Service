@@ -22,9 +22,9 @@ const MovieEdit = (props) => {
   const [selectedGenre, setSelectedGenre] = useState(movie.genres);
   const [startDate, setStartDate] = useState(new Date(movie.release_date));
   const [title, setTitle] = useState(movie.title);
-  const [runtime, setRuntime] = useState(movie.runtime);
   const [posterPath, setPosterPath] = useState(movie.poster_path);
   const [overview, setOverview] = useState(movie.overview);
+  const [runTime, setRunTime] = useState(movie.runtime);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -36,10 +36,10 @@ const MovieEdit = (props) => {
       "poster_path": posterPath,
       "genres": selectedGenre,
       "overview": overview,
-      "runtime": runtime,
+      "runtime": runTime,
     };
     
-    editMovie(editedMovie, movie.id);
+    editMovie( editedMovie );
   }
 
   return (
@@ -105,12 +105,12 @@ const MovieEdit = (props) => {
 
         <div className={style.item}>
           <Input
-            type="text"
+            type="number"
+            id="runtime"
             label="Runtime"
             placeholder="Runtime here"
-            id="Runtime"
-            value={runtime}
-            handleInputChange={event => setRuntime(+event.target.value)}
+            value={runTime}
+            handleInputChange={event => setRunTime(event.target.value)}
           />
         </div>
 

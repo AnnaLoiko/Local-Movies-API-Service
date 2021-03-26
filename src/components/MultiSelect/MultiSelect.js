@@ -40,7 +40,7 @@ const MultiSelect = (props) => {
               checked={selectedItems.includes(item)}
               onChange={() => { handleChangeSelected(!selectedItems.includes(item), item); }}
             />
-            <label htmlFor={item} className={style.lableCheckbox}>{item}</label>
+            <label htmlFor={`${item}_${index}`} className={style.lableCheckbox}>{item}</label>
           </div>
         ))}
       </div>

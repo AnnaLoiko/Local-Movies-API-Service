@@ -10,7 +10,7 @@ export const getMovies = (data = {}) => {
       method: 'GET',
       url: 'http://localhost:4000/movies',
       params: {
-        limit: '20',
+        limit: '12',
         filter: (data.filterActiveKey === 'All') ? '' : data.filterActiveKey,
         sortBy: data.sortActiveKey,
         sortOrder: data.sortOrder,
@@ -42,10 +42,10 @@ export const addMovie = (newMovie) => {
       url: 'http://localhost:4000/movies',
       data: newMovie,
     })
-      .then(() => {
+      .then(response => {
         dispatch({
           type: ACTIONS.ADD_MOVIE_SUCCESS,
-          payload: newMovie,
+          payload: {...newMovie, id: response.data.id },
         });
       })
       .catch((error) => {
@@ -83,7 +83,8 @@ export const deleteMovie = (movieId) => {
         id: movieId,
       },
     })
-      .then(() => {
+      .then(response => {
+        console.log('response', response);
         dispatch({
           type: ACTIONS.DELETE_MOVIE_SUCCESS,
           payload: movieId,
@@ -115,3 +116,5 @@ export const getMovieById = (movieId) => {
       })
   }
 };
+
+export const postMessage = () => ({type: ACTIONS.PUT_MESSAGE_ADD_MOVIE_SUCCESS, payload: false });
