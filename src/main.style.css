@@ -20,13 +20,6 @@ strong {
   background: #cccccc no-repeat top 100px center / 50% url("./assets/images/404.jpg");
 }
 
-h1 {
-  font-size: 35px;
-  text-transform: uppercase;
-  font-weight: 300;
-  padding-bottom: 30px;
-}
-
 #root {
   position: relative;
 }

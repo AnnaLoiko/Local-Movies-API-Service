@@ -1,0 +1,57 @@
+.wrap {
+    background-color: rgb(0,0,0,0.8);
+    padding: 70px 120px 70px 60px;
+    margin-top: -60px;
+    display: flex;
+}
+
+.imgWrap {
+    max-width: 300px;
+    width: 25%;
+    margin-right: 60px;
+}
+
+.infoWrap {
+    width: 75%;
+}
+
+.imgWrap img{
+    width: 100%;
+}
+
+.infoWrap h1 {
+    font-weight: 300;
+    max-width: 400px;
+    font-size: 35px;
+    padding: 14px 40px 14px 0;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.rating {
+    color: green;
+    border-radius: 50%;
+    border: 1px solid #999999;
+    line-height: 66px;
+    font-size: 25px;
+    height: 66px;
+    min-width: 66px;
+    text-align: center;
+}
+
+.addInfo {
+    font-size: 18px;
+}
+
+.itemData {
+    color: #F65261;
+    padding: 20px 40px 20px 0;
+    font-size: 24px;
+}
+
+.text {
+    font-size: 18px;
+}

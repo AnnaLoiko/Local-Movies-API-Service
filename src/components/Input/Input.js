@@ -3,9 +3,7 @@ import style from "./style.module";
 
 import PropTypes from 'prop-types';
 
-const Input = ( props ) => {
-  return (
-    <>
+const Input = ( props ) => <>
       {props.label && <label className={style.label}>{props.label}</label>}
       <input
         className={style.input}
@@ -15,8 +13,7 @@ const Input = ( props ) => {
         onChange={(e)=>{}}
       />
     </>
-  )
-}
+
 
 Input.propTypes = {
   type: PropTypes.string,

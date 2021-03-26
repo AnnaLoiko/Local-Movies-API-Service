@@ -1,31 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./style.module";
-
-import moviesList from "@/data/moviesList";
-import filterOptions from "@/data/filterOptions";
-import sortOptions from "@/data/sortOptions";
 
 import MovieCount from './MovieCount/MovieCount';
 import MovieFilter from './MovieFilter/MovieFilter';
-import Sort from './Sort/Sort';
+import MovieSort from './MovieSort/MovieSort';
 import MovieList from './MovieList/MovieList';
 
+import moviesList from "@/data/moviesList";
+
 const Main = () => {
+  const [currentMovies, setCurrentMovies] = useState(moviesList);
 
-    return (
-      <>
-        <div className={style.wrapNav}>
-          <MovieFilter filterOptions={filterOptions} />
-          <Sort sortOptions={sortOptions} />
-        </div>
+  return (
+    <>
+      <div className={style.wrapNav}>
+        <MovieFilter
+          moviesList={moviesList}
+          setCurrentMovies={setCurrentMovies}
+        />
+        <MovieSort
+          moviesList={currentMovies}
+          setCurrentMovies={setCurrentMovies}
+        />
+      </div>
 
-        <MovieCount count={moviesList.length} />
-        
-        <div className={style.movieListWrap}>
-          <MovieList moviesList={moviesList} />
-        </div>
-      </>
-    );
+      <MovieCount
+        count={currentMovies.length}
+      />
+
+      <main className={style.movieListWrap}>
+        <MovieList
+          moviesList={currentMovies}
+        />
+      </main>
+    </>
+  );
 }
 
 export default Main;

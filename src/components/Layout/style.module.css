@@ -1,0 +1,16 @@
+.appWrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 63px;
+  box-sizing: border-box;
+  background-color: #232323;
+}
+
+.mainWrap {
+  padding: 10px 60px;
+}
+
+
+

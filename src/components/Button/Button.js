@@ -3,18 +3,19 @@ import style from "./style.module";
 
 import PropTypes from 'prop-types';
 
-const Button = ( props ) => {
-  const { text, className, addClassName, onClick } = props;
+const Button = React.memo((props) => {
+  const { text, className, addClassName, handleClick } = props;
 
   return (
-    <button 
+    <button
       className={`${style[className]} ${addClassName && style[addClassName]} `}
-      onClick={onClick}
+      onClick={handleClick}
     >
       <span>{text}</span>
     </button>
   )
-}
+});
+
 
 Button.propTypes = {
   text: PropTypes.string,
