@@ -40,6 +40,7 @@ const MovieEdit = (props) => {
     };
     
     editMovie( editedMovie );
+    clickCloseModal();
   }
 
   return (
