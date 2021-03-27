@@ -14,12 +14,12 @@
   height: 444px;
   background: #424242 no-repeat center / 140px url("../../../assets/images/bg-no-image.png");
   overflow: hidden;
+  cursor: pointer;
+  user-select: none;
 }
 
 .itemImgWrap img {
   width: 100%;
-  cursor: pointer;
-  user-select: none;
 }
 
 .itemData {

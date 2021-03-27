@@ -24,3 +24,11 @@ strong {
   position: relative;
 }
 
+div {
+  cursor: default;
+}
+
+p {
+  cursor: text;
+}
+

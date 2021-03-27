@@ -2,7 +2,7 @@
     display: inline-block;
     color: #ffffff;
     background-color: #F65261;
-    border: 1px solid #F65261;
+    border: 2px solid #F65261;
     border-radius: 5px;
     text-align: center;
     text-transform: uppercase;
@@ -20,7 +20,7 @@
     display: inline-block;
     background-color: #232323;
     color: #F65261;
-    border: 1px solid #F65261;
+    border: 2px solid #F65261;
     border-radius: 5px;
     text-align: center;
     text-transform: uppercase;
@@ -38,6 +38,7 @@
     display: inline-block;
     color: #F65261;
     background: rgba(66,66,66,0.8);
+    border: 2px solid rgba(66,66,66,0.8);
     border-radius: 5px;
     text-align: center;
     font-size: 22px;
@@ -59,6 +60,22 @@
     background-repeat: no-repeat;
     background-size: 30px;
     background-position: center;
+}
+
+.btnPrimary:hover,
+.btnPrimary:active,
+.btnPrimaryInvert:hover,
+.btnPrimaryInvert:active,
+.btnSecondary:hover,
+.btnSecondary:active {
+    border: 2px solid #efefef;
+    color: #efefef;
+}
+
+.btnPrimary:disabled,
+.btnSecondary:disabled {
+    border: 2px solid #efefef;
+    color: #efefef;
 }
 
 

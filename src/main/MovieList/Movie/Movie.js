@@ -39,13 +39,12 @@ const Movie = (props) => {
       <div className={style.itemWrap}>
         <span className={style.iconDropDown} onClick={() => setIsShowDropDown(true)}></span>
 
-        <div className={style.itemImgWrap}>
-            <img
-              alt=""
-              src={poster_path}
-              title="Get movie details"
-              onClick={() => getMovieById(id)}
-            />
+        <div className={style.itemImgWrap} onClick={() => getMovieById(id)}>
+          <img
+            alt=""
+            src={poster_path}
+            title="Get movie details"
+          />
         </div>
 
         <div className={style.itemInfo}>
