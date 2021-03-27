@@ -36,7 +36,7 @@ const MovieEdit = (props) => {
       "poster_path": posterPath,
       "genres": selectedGenre,
       "overview": overview,
-      "runtime": runTime,
+      "runtime": +runTime,
     };
     
     editMovie( editedMovie );
@@ -111,6 +111,7 @@ const MovieEdit = (props) => {
             label="Runtime"
             placeholder="Runtime here"
             value={runTime}
+            min={1}
             handleInputChange={event => setRunTime(event.target.value)}
           />
         </div>

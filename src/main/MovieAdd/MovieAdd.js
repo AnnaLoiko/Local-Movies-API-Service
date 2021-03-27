@@ -20,7 +20,7 @@ import { addMovie } from "@/redux/actions";
 const MovieAdd = (props) => {
   const { isOpen, genresList, clickCloseModal, addMovie, messageAddMovieSucc } = props;
 
-  const [selectedGenre, setSelectedGenre] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState();
   const [date, setDate] = useState(new Date());
   const [title, setTitle] = useState('');
   const [posterPath, setPosterPath] = useState('');
@@ -35,22 +35,18 @@ const MovieAdd = (props) => {
     //   "release_date": date,
     //   "poster_path": posterPath,
     //   "overview": overview,
-    //   "runtime": runtime,
-    //   "genres": [
-    //     "Drama",
-    //   ],
+    //   "runtime": +runTime,
+    //   "genres": selectedGenre,
     // };
 
+    // пока нет валидации, для удобства
     const newMovie = {
       "title": title || 'Some title',
       "release_date": date || "2021-03-23",
       "poster_path": posterPath || 'https://chto-takoe-lyubov.net/wp-content/uploads/2020/10/Risunki-Medved-2.jpg',
       "overview": overview || 'Some overview',
       "runtime": runTime || 12,
-      // "genres": selectedGenre,
-      "genres": [
-        "Drama",
-      ],
+      "genres": selectedGenre || ["Drama"],
     };
 
     addMovie(newMovie);
@@ -128,19 +124,20 @@ const MovieAdd = (props) => {
           </div>
 
           <div className={style.item}>
-            <Input
+          <Input
               type="number"
               id="runtime"
               label="Runtime"
               placeholder="Runtime here"
               value={runTime}
+              min="1"
               handleInputChange={event => setRunTime(event.target.value)}
             />
           </div>
 
           <div className={style.btnWrap}>
             <Button type="reset" text="Reset" className="btnPrimaryInvert" />
-            <Button type="submit" text="Submit" className="btnPrimary" />
+            <Button type="submit" text="submit" className="btnPrimary" />
           </div>
 
         </form>

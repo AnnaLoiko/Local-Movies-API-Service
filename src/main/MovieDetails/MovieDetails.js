@@ -21,7 +21,7 @@ const MovieDetails = (props) => {
 
   const releaseDate = release_date ? new Date(release_date).getFullYear() : '';
   
-  useEffect(() => { getMovieById(id || 181808) }, [id]);
+  useEffect(() => { getMovieById(id || 354912) }, [id]);
 
   return (
 

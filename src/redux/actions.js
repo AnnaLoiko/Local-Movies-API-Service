@@ -36,6 +36,7 @@ export const getMovies = (data = {}) => {
 };
 
 export const addMovie = (newMovie) => {
+  console.log(111, newMovie);
   return (dispatch) => {
     axios({
       method: 'POST',

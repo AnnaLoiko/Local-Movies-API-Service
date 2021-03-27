@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 
 const Input = (props) => {
-  const {id, type = 'text', label, placeholder = '', value, disabled = false, handleInputChange} = props;
+  const {id, type = 'text', label, placeholder = '', value, disabled = false, handleInputChange, min} = props;
 
   return (
     <>
@@ -18,6 +18,7 @@ const Input = (props) => {
         placeholder={placeholder}
         value={value}
         disabled={disabled}
+        min={min}
         onChange={handleInputChange}
       />
     </>

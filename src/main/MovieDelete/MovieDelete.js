@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useCallback, useEffect} from "react";
 import { connect } from 'react-redux';
 import style from "./style.module.css";
 
@@ -11,6 +11,7 @@ import { deleteMovie } from "@/redux/actions";
 
 const MovieDelete = (props) => {
   const { isOpen, clickCloseModal, deleteMovie, movieId } = props;
+
 
   return (
     <Modal
@@ -25,6 +26,7 @@ const MovieDelete = (props) => {
           text="Confirm"
           className="btnPrimary"
           handleClick={() => deleteMovie(movieId)}
+          autoFocus='autofocus'
         />
       </div>
     </Modal>
@@ -35,8 +37,8 @@ const MovieDelete = (props) => {
 MovieDelete.propTypes = {
   isOpen: PropTypes.bool,
   clickCloseModal: PropTypes.func,
-  movieId: PropTypes.number,
   deleteMovie: PropTypes.func,
+  movieId: PropTypes.number,
 };
 
 

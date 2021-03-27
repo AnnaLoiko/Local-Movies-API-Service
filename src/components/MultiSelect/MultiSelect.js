@@ -14,6 +14,9 @@ const MultiSelect = (props) => {
 
   function handleChangeSelected(checked, value) {
     const newSelectedItems = checked ? selectedItems.concat(value) : selectedItems.filter( elem => (elem !== value));
+    
+    console.log('newSelectedItems', newSelectedItems),
+    console.log('newSelectedItems', newSelectedItems),
     handleChange(newSelectedItems);
     setSelectedItemsTitle(newSelectedItems);
   }
