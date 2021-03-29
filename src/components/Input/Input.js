@@ -4,23 +4,13 @@ import style from "./style.module";
 import PropTypes from 'prop-types';
 
 
-const Input = (props) => {
-  const {id, type = 'text', label, placeholder = '', value, disabled = false, handleInputChange, min} = props;
+const Input = ({ field, form, ...props }) => {
 
   return (
     <>
-      {label && <label className={style.label}>{label}</label>}
+      {props.label && <label className={style.label}>{props.label}</label>}
 
-      <input
-        id={id}
-        type={type}
-        className={style.input}
-        placeholder={placeholder}
-        value={value}
-        disabled={disabled}
-        min={min}
-        onChange={handleInputChange}
-      />
+      <input {...field} {...props} className={style.input} />
     </>
   )
 };

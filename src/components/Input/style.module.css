@@ -19,6 +19,13 @@ input::-webkit-inner-spin-button {
     line-height: 54px;
 }
 
+.input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 50px #2e2e2e inset;/*your box-shadow*/
+    -webkit-text-fill-color: #fbfbfb;
+    border-radius: 5px;
+    border: 1px solid #2e2e2e;
+}
+
 .input::placeholder {
     color: #999999;
 }
