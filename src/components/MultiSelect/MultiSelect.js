@@ -1,21 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./style.module";
 
-import PropTypes from 'prop-types';
-import useToggle from '@/hooks/useToggle';
+import PropTypes from "prop-types";
+import useToggle from "@/hooks/useToggle";
 
 const MultiSelect = (props) => {
-  const { items, placeholder, selectedItems = [], handleChange } = props;
+  const { genresList, placeholder, handleChange, value = [] } = props;
 
   const [isChecked, toggleCheck] = useToggle(false);
-  const [selectedItemsTitle, setSelectedItemsTitle] = useState(selectedItems || '');
+  const [selectedItemsTitle, setSelectedItemsTitle] = useState( value || "" );
 
-  console.log('selectedItemsTitle', selectedItemsTitle);
+  let itemsStr = selectedItemsTitle.length !== 0 && selectedItemsTitle.join(", ");
+  useEffect(() => {
+    setSelectedItemsTitle(value || '');
+    itemsStr = selectedItemsTitle.length !== 0 && selectedItemsTitle.join(", ");
+  }, [value]);
 
-  const itemsStr = selectedItemsTitle.length !== 0 && selectedItemsTitle.join(", ");
-
-  function handleChangeSelected(checked, value) {
-    const newSelectedItems = checked ? [...selectedItems, value] : selectedItems.filter(elem => (elem !== value));
+  function handleChangeSelected(checked, newValue) {
+    const newSelectedItems = checked
+      ? [...value, newValue]
+      : value.filter((elem) => elem !== newValue);
 
     handleChange(newSelectedItems);
     setSelectedItemsTitle(newSelectedItems);
@@ -23,39 +27,40 @@ const MultiSelect = (props) => {
 
   return (
     <>
-      <div className={`${style.inputWrap} ${isChecked && style.up}`}>
+      <label className={style.label}>
+        Genres
+      </label>
 
-        <input
-          type="text"
-          className={style.input}
-          onClick={() => toggleCheck(!isChecked)}
-          title={itemsStr}
-          value={itemsStr}
-          defaultValue={itemsStr}
-          placeholder={placeholder}
-        />
+      <div
+        className={`${style.inputWrap} ${isChecked && style.up} ${!itemsStr && style.showPlaceholder} ${props.error && style.errorInput}`}
+        onClick={() => toggleCheck(!isChecked)}
+      >
+        <p>{itemsStr || placeholder}</p>
       </div>
 
       <div className={`${style.selectDropDown} ${!isChecked && style.hide}`}>
-        {items.map((item, index) => (
+        {genresList.map((item, index) => (
           <div key={index}>
             <input
               type="checkbox"
               className={style.checkbox}
               id={`${item}_${index}`}
               name={item}
-              value="1"
-              checked={selectedItems.includes(item)}
-              onChange={() => { handleChangeSelected(!selectedItems.includes(item), item); }}
+              value={item}
+              checked={value.includes(item)}
+              onChange={() => {
+                handleChangeSelected(!value.includes(item), item);
+              }}
             />
-            <label htmlFor={`${item}_${index}`} className={style.lableCheckbox}>{item}</label>
+            <label htmlFor={`${item}_${index}`} className={style.lableCheckbox}>
+              {item}
+            </label>
           </div>
         ))}
       </div>
-
     </>
-  )
-}
+  );
+};
 
 MultiSelect.propTypes = {
   items: PropTypes.array,
@@ -65,4 +70,3 @@ MultiSelect.propTypes = {
 };
 
 export default MultiSelect;
-

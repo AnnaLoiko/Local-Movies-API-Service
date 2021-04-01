@@ -6,6 +6,7 @@ input::-webkit-inner-spin-button {
 .input {
     display: block;
     background-color: #2e2e2e;
+    border: 1px solid #2e2e2e;
     color: #fbfbfb;
     width: 100%;
     margin-right: 20px;
@@ -19,11 +20,12 @@ input::-webkit-inner-spin-button {
     line-height: 54px;
 }
 
-.input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 50px #2e2e2e inset;/*your box-shadow*/
-    -webkit-text-fill-color: #fbfbfb;
-    border-radius: 5px;
-    border: 1px solid #2e2e2e;
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+  transition: background-color 5000s;
+  -webkit-text-fill-color: #fff !important;
 }
 
 .input::placeholder {
@@ -48,4 +50,8 @@ input::-webkit-inner-spin-button {
     font-weight: 500;
     padding-bottom: 5px;
     font-size: 14px;
+}
+
+.errorInput {
+    border: 1px solid #F65261 !important;
 }
