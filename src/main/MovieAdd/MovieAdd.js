@@ -56,9 +56,10 @@ const MovieAdd = (props) => {
     <Modal
       title={messageAddMovieSucc ? "" : "Add movie"}
       isOpen={isOpen}
-      clickCloseModal={clickCloseModal}
+      clickCloseModal={clickCloseModal}                                                     
     >
       {messageAddMovieSucc && <NoticeMovieAdd />}
+      
 
       {!messageAddMovieSucc && (
         <Formik

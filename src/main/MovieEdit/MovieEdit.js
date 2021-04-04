@@ -62,7 +62,7 @@ const MovieEdit = (props) => {
           validationSchema={validationSchema}
           onSubmit={(values) => editMovie(values)}
         >
-          {({ errors, touched, handleResetClick }) => (
+          {({ errors, touched }) => (
             <Form>
               <div className={style.item}>
                 <Field
