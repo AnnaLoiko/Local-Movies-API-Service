@@ -3,17 +3,29 @@ import style from "./style.module";
 
 import PropTypes from 'prop-types';
 
-const FilterItem = ( props ) => (
-  <li className={`${props.isSelected && style.active} ${style.itemDrop} ${!props.direction && style.up}`} onClick={props.handleClick}>
-    {props.title}
-  </li>
-)
 
+const MovieSortItem = (props) => {
+  const { title, isSelected, sortOrder, handleClick } = props;
 
-FilterItem.propTypes = {
-  title: PropTypes.string,
-  isSelected: PropTypes.bool,  
+  const styleArrow = (sortOrder === "asc" ? style.up : style.down);
+
+  return (
+    <li
+      className={`${style.itemDrop} ${isSelected && style.active} ${styleArrow}`}
+      onClick={handleClick}
+    >
+      {title}
+    </li>
+  )
 };
 
-export default FilterItem;
+
+MovieSortItem.propTypes = {
+  title: PropTypes.string,
+  sortOrder: PropTypes.string,
+  isSelected: PropTypes.bool,
+  handleClick: PropTypes.func,
+};
+
+export default MovieSortItem;
 

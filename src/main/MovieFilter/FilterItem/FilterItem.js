@@ -3,16 +3,23 @@ import style from "./style.module";
 
 import PropTypes from 'prop-types';
 
-const FilterItem = ( props ) => (
-  <li className={`${props.isSelected && style.active} ${style.filterItem}`} onClick={props.handleClick}>
-    {props.title}
-  </li>
-)
+const FilterItem = (props) => {
+  const { title, isSelected, handleClick } = props;
 
+  return (
+    <li
+      className={`${style.filterItem} ${isSelected && style.active}`}
+      onClick={handleClick}
+    >
+      {title}
+    </li>
+  )
+};
 
 FilterItem.propTypes = {
   title: PropTypes.string,
-  isSelected: PropTypes.bool,  
+  isSelected: PropTypes.bool,
+  handleClick: PropTypes.func,
 };
 
 export default FilterItem;

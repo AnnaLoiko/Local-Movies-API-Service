@@ -1,19 +1,34 @@
-import React from "react";
+import React, {useCallback, useEffect} from "react";
 import style from "./style.module";
 
 import PropTypes from 'prop-types';
 
 const DropDownList = (props) => {
-  const { isShow, clickClose, items, className } = props;
+  const { isShow, items, clickClose  } = props;
+
+  const escCloseDropDown = useCallback((event) =>{
+    if (event.keyCode === 27) {
+      clickClose();
+    }
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("keydown", escCloseDropDown, false);
+    return () => {
+      document.removeEventListener("keydown", escCloseDropDown, true);
+    };
+  }, [])
+
 
   return (
-    <div className={`${!isShow && style.hide} ${style.dropDownListWrap} ${className && style[className]}`}>
+    <div className={`${!isShow && style.hide} ${style.dropDownListWrap}`}>
       <button className={style.closeBtn} onClick={clickClose}></button>
+      
       <div className={style.dropDownList}>
         {items.map((item, index) => (
           <div
             key={index}
-            className={`${item.isSelected && style.active} ${style.itemDrop}`}
+            className={`${item.isSelected && style.active} ${style.item}`}
             onClick={item.handleClick}
           >
             {item.label}
@@ -27,7 +42,6 @@ const DropDownList = (props) => {
 DropDownList.propTypes = {
   isShow: PropTypes.bool,
   items: PropTypes.array,
-  className: PropTypes.string,
   clickClose: PropTypes.func,
 };
 

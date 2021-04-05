@@ -11,6 +11,7 @@ const MovieCount = ({ count }) => {
   )
 }
 
+
 MovieCount.propTypes = {
   count: PropTypes.number
 };

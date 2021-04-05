@@ -3,23 +3,44 @@ import style from "./style.module";
 
 import PropTypes from 'prop-types';
 
-const Input = ( props ) => <>
-      {props.label && <label className={style.label}>{props.label}</label>}
+
+const Input = (props) => {
+  const {id, type = 'text', label, placeholder = '', value, disabled = false, handleInputChange, min} = props;
+
+  return (
+    <>
+      {label && <label className={style.label}>{label}</label>}
+
       <input
+        id={id}
+        type={type}
         className={style.input}
-        type={props.type}
-        placeholder={props.placeholder}
-        value={props.value}
-        onChange={(e)=>{}}
+        placeholder={placeholder}
+        value={value}
+        disabled={disabled}
+        min={min}
+        onChange={handleInputChange}
       />
     </>
+  )
+};
 
 
 Input.propTypes = {
+  id: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   type: PropTypes.string,
+  label: PropTypes.string,
   placeholder: PropTypes.string,
-  value: PropTypes.string,
-  onChange: PropTypes.func,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  handleInputChange: PropTypes.func,
 };
 
 export default Input;
