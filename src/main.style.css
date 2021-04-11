@@ -16,8 +16,24 @@ strong {
   font-weight: 700;
 }
 
-.error {
+/* .error {
   background: #cccccc no-repeat top 100px center / 50% url("./assets/images/404.jpg");
+} */
+
+.errorInput {
+  display: block;
+  color: #F65261;
+  font-size: 12px;
+  background: transparent;
+  padding: 3px 0;
+}
+
+.label {
+  color: #F65261;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding-bottom: 5px;
+  font-size: 14px;
 }
 
 #root {
@@ -30,5 +46,15 @@ div {
 
 p {
   cursor: text;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 50px #2e2e2e inset;
+    -webkit-text-fill-color: #fbfbfb;
+    border-radius: 5px;
+    border: 1px solid #2e2e2e;
 }
 

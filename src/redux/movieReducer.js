@@ -17,6 +17,7 @@ const initialState = {
   genresList: ['Documentary', 'Comedy', 'Horror', 'Crime', 'Animation', 'Adventure', 'Family', 'Drama', 'Romance', 'Fantasy', 'Adventure', 'Science Fiction'],
   loader: false,
   messageAddMovieSucc: false,
+  messageEditMovieSucc: false,
   errorGetMovie: false,
   
   // not use yet
@@ -98,6 +99,7 @@ const movieReducer = (state = initialState, action) => {
               : item
         ),
         errorEditMovie: false,
+        messageEditMovieSucc: true,
       };
 
     case ACTIONS.EDIT_MOVIE_ERROR:
