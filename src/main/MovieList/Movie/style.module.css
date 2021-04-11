@@ -1,6 +1,6 @@
 .itemWrap {
-  width: 28%;
-  margin: 0 30px 35px;
+  width: 332px;
+  margin: 0 22px 35px;
   padding-bottom: 5px;
   position: relative;
 }
@@ -16,6 +16,12 @@
   overflow: hidden;
   cursor: pointer;
   user-select: none;
+}
+
+.itemImgWrap a {
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .itemImgWrap img {

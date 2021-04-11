@@ -6,6 +6,7 @@
   padding-bottom: 63px;
   box-sizing: border-box;
   background-color: #232323;
+  min-height: 100vh;
 }
 
 .mainWrap {

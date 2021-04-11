@@ -1,30 +1,38 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { Redirect, useParams } from "react-router-dom";
 
 import style from "./style.module";
 
+import { getMovieById } from "@/redux/actions";
+
 import PropTypes from 'prop-types';
-import { getMovieById } from '@/redux/actions';
+
 
 const MovieDetails = (props) => {
-  const { getMovieById } = props;
+  const { getMovieById, errorGetMovieById } = props;
   const {
     id,
-    overview = '',
+    overview = 'Overview will be here',
     genres = [],
     poster_path,
     release_date,
-    runtime = 'Runtime, ',
+    runtime = '',
     title = 'Movie title',
     vote_average
   } = props.movie;
-
+  
   const releaseDate = release_date ? new Date(release_date).getFullYear() : '';
 
-  useEffect(() => { getMovieById(id || 354912) }, [id]);
+  const { filmId } = useParams();
+  useEffect(() => {
+    id === undefined && getMovieById(filmId);
+  }, []);
+
 
   return (
-
+    <>
+    {errorGetMovieById && <Redirect to="/404" />}
     <div className={style.wrap}>
       { id && <>
         <div className={style.imgWrap}>
@@ -34,14 +42,14 @@ const MovieDetails = (props) => {
         <div className={style.infoWrap}>
           <div className={style.flex}>
             <h1>{title}</h1>
-            {vote_average && <div className={style.rating} title="Movie rating">{vote_average}</div>}
+            {vote_average > 0 && <div className={style.rating} title="Movie rating">{vote_average}</div>}
           </div>
 
           <p className={style.addInfo} title="Relese genre">{[...genres].join(", ")}</p>
 
           <div className={style.flex}>
             {releaseDate && <span className={style.itemData} title="Relese date">{releaseDate}</span>}
-            <span className={style.itemData} title="Movie duration">{`${runtime} min`}</span>
+            {runtime && <span className={style.itemData} title="Movie duration">{`${runtime} min`}</span>}
           </div>
 
           <p className={style.text}>
@@ -50,6 +58,7 @@ const MovieDetails = (props) => {
         </div>
       </>}
     </div>
+    </>
   );
 }
 
@@ -60,11 +69,13 @@ MovieDetails.propTypes = {
 const mapStateToProps = state => {
   return {
     movie: state.movies.currentMovie,
+    errorGetMovieById: state.movies.errorGetMovieById,
   }
 }
 
 const mapDispatchToProps = {
   getMovieById
-}
+};
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieDetails);

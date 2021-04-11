@@ -16,10 +16,6 @@ strong {
   font-weight: 700;
 }
 
-/* .error {
-  background: #cccccc no-repeat top 100px center / 50% url("./assets/images/404.jpg");
-} */
-
 .errorInput {
   display: block;
   color: #F65261;
@@ -38,6 +34,8 @@ strong {
 
 #root {
   position: relative;
+  min-height: 400px;
+  overflow-y: auto;
 }
 
 div {
@@ -50,11 +48,16 @@ p {
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 50px #2e2e2e inset;
-    -webkit-text-fill-color: #fbfbfb;
-    border-radius: 5px;
-    border: 1px solid #2e2e2e;
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 50px #2e2e2e inset;
+  -webkit-text-fill-color: #fbfbfb;
+  border-radius: 5px;
+  border: 1px solid #2e2e2e;
 }
 

@@ -1,19 +1,26 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { connect } from "react-redux";
+import { useLocation } from "react-router-dom";
 import style from "./style.module";
 
 import MovieAdd from '@/main/MovieAdd/MovieAdd';
-
 import Search from "@/components/Search/Search";
 import Button from "@/components/Button/Button";
 import Layout from "@/components/Layout/Layout";
 
-import { postMessage } from "@/redux/actions";
+import useUpdateEffect from '@/hooks/useUpdateEffect';
+import { postMessage, resetSearchData } from "@/redux/actions";
 
 
 const HomePage = (props) => {
-  const {postMessage} = props;
+  const {postMessage, resetSearchData} = props;
   const [openModal, setOpenModal] = useState(false);
+  const location = useLocation();
+
+  useUpdateEffect(() => {
+    location.pathname === "/" && resetSearchData();
+  }, [location.pathname])
+
 
   const handleClick = useCallback(() => {
     setOpenModal(true)
@@ -44,8 +51,14 @@ const HomePage = (props) => {
   );
 }
 
+const mapStateToProps = state => {
+  return {
+    params: state.movies.params,
+  }
+}
 
 const mapDispatchToProps = {
-  postMessage
+  postMessage,
+  resetSearchData
 }
-export default connect(null, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

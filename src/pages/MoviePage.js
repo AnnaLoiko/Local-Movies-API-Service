@@ -1,21 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import style from "./style.module";
 
-import MovieDetails from '@/main/MovieDetails/MovieDetails';
+import MovieDetails from "@/main/MovieDetails/MovieDetails";
 import Layout from "@/components/Layout/Layout";
-import Button from "@/components/Button/Button";
 
-const MoviePage = () => <Layout>
-  <MovieDetails />
-  <div className={style.addMovieBtnWrap}>
-    <Button
-      onClick={() => {
-        console.log('return to main page');
-      }}
-      text=""
-      className="btnZoom"
-    />
-  </div>
-</Layout>
+const MoviePage = () => (
+  <>
+    <Layout>
+      <MovieDetails />
+      <div className={style.addMovieBtnWrap}>
+        <Link to="/" className={style.btnZoom} />
+      </div>
+    </Layout>
+  </>
+);
 
 export default MoviePage;

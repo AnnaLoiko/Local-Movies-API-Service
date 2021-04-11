@@ -1,19 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from 'react-redux';
+import { useHistory } from "react-router-dom";
+
 import style from "./style.module";
 
-import Button from '@/Components/Button/Button';
 import Input from '@/Components/Input/Input';
+import Button from '@/Components/Button/Button';
 
+import { getMovies } from "@/redux/actions";
+import useUpdateEffect from '@/hooks/useUpdateEffect';
 
-const Search = () => <>
-  <div className={style.searchWrap}>
-    <Input
-      type="text"
-      placeholder="What do you want to watch?"
-    />
-  </div>
-  <Button className="btnPrimary" addClassName="btnLarge" text="Search" onClick={e => e.preventDefault()} />
-</>
+const Search = (props) =>  {
+  const { params, getMovies } = props;
 
+  const [value, setValue] = useState(params.search);
+  const history = useHistory();
 
-export default Search;
+  const searchChange = (e) => {
+    e.preventDefault(),
+    getMovies({...params, search: value}),
+    history.push(`/search/Search%20${value}`)
+  }
+
+  useUpdateEffect(() => {
+    params.search === undefined && setValue('');
+  }, [params.search])
+
+  return (
+    <form>
+      <div className={style.searchWrap}>
+        <Input
+          type="search"
+          placeholder="What do you want to watch?"
+          value={value}
+          onChange={e => {setValue(e.target.value)}}
+        />
+      </div>
+      
+      <Button 
+        text="Search"
+        type="text"
+        className="btnPrimary"
+        addClassName="btnLarge"
+        handleClick={(e) => searchChange(e)}
+      />
+    </form>
+  )
+}
+
+const mapStateToProps = state => {
+  return {
+    params: state.movies.params,
+  }
+}
+
+const mapDispatchToProps = {
+  getMovies
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

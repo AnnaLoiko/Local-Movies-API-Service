@@ -1,14 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import style from "./style.module";
 
 const Logo = () => {
   return (
-    <a 
+    <Link 
       className={style.logo}
-      href="https://github.com/AnnaLoiko/Local-Movies-API-Service"
+      to="/"
     >
       <strong>netflix</strong>roulette
-    </a>
+    </Link>
   )
 }
 

@@ -14,6 +14,8 @@ export const getMovies = (data = {}) => {
         filter: (data.filterActiveKey === 'All') ? '' : data.filterActiveKey,
         sortBy: data.sortActiveKey,
         sortOrder: data.sortOrder,
+        search: data.search,
+        searchBy: data.searchBy,
       },
     })
       .then(response => {
@@ -24,6 +26,7 @@ export const getMovies = (data = {}) => {
             filterActiveKey: data.filterActiveKey || 'All',
             sortActiveKey: data.sortActiveKey || 'release_date',
             sortOrder: data.sortOrder,
+            search: data.search,
           }
         });
         dispatch({ type: ACTIONS.MOVIE_LOADER, payload: false });
@@ -117,3 +120,5 @@ export const getMovieById = (movieId) => {
 };
 
 export const postMessage = () => ({type: ACTIONS.PUT_MESSAGE_ADD_MOVIE_SUCCESS, payload: false });
+
+export const resetSearchData = () => ({type: ACTIONS.RESET_SEARCH_DATA});
