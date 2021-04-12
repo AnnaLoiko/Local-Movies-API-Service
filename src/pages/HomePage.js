@@ -9,18 +9,17 @@ import Button from "@/components/Button/Button";
 import Layout from "@/components/Layout/Layout";
 
 import useUpdateEffect from '@/hooks/useUpdateEffect';
-import { postMessage, resetSearchData } from "@/redux/actions";
+import { postMessage, resetSearchData, getMovies } from "@/redux/actions";
 
 
 const HomePage = (props) => {
-  const {postMessage, resetSearchData} = props;
+  const {postMessage, resetSearchData, getMovies} = props;
   const [openModal, setOpenModal] = useState(false);
+  
   const location = useLocation();
-
   useUpdateEffect(() => {
-    location.pathname === "/" && resetSearchData();
-  }, [location.pathname])
-
+    if (location.pathname === "/" && location.state === "fromLogo") { getMovies(), resetSearchData() };
+  }, [location.state])
 
   const handleClick = useCallback(() => {
     setOpenModal(true)
@@ -59,6 +58,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   postMessage,
-  resetSearchData
+  resetSearchData,
+  getMovies
 }
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import { connect } from 'react-redux';
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 import style from "./style.module";
 
@@ -13,7 +13,7 @@ import useUpdateEffect from '@/hooks/useUpdateEffect';
 const Search = (props) =>  {
   const { params, getMovies } = props;
 
-  const [value, setValue] = useState(params.search);
+  const [value, setValue] = useState('');
   const history = useHistory();
 
   const searchChange = (e) => {
@@ -23,7 +23,7 @@ const Search = (props) =>  {
   }
 
   useUpdateEffect(() => {
-    params.search === undefined && setValue('');
+    !params.search && setValue('');
   }, [params.search])
 
   return (

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from 'react-redux';
-import { useParams } from "react-router-dom";
-
+import { useParams, useLocation } from "react-router-dom";
 import style from "./style.module";
 
 import MovieCount from './MovieCount/MovieCount';
@@ -9,17 +8,18 @@ import MovieFilter from './MovieFilter/MovieFilter';
 import MovieSort from './MovieSort/MovieSort';
 import MovieList from './MovieList/MovieList';
 
-import { getMovies, resetSearchData } from "@/redux/actions";
+import { getMovies } from "@/redux/actions";
 
 
 const Main = (props) => {
   const { moviesList, getMovies, filterKeys, sortByKeys, params, errorGetMovie, loader } = props;
   const moviesListLength = moviesList.length > 0 ? moviesList.length : false;
   
+  const location = useLocation();
   const { Query } = useParams();
   useEffect(() => {
     Query !== undefined && getMovies({...params, search: Query.trim()}) ;
-  }, []);
+  }, [location.pathname]);
 
 
   return (
@@ -57,8 +57,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  getMovies,
-  resetSearchData
+  getMovies
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
