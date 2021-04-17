@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search  /  Connected React-Redux Component Search:  Should render snapshot Search component 1`] = `
+<DocumentFragment>
+  <form>
+    <div
+      class="searchWrap"
+    >
+      <input
+        class="input undefined"
+        placeholder="What do you want to watch?"
+        role="textbox"
+        type="search"
+        value=""
+      />
+    </div>
+    <button
+      class="btnPrimary btnLarge "
+      type="text"
+    >
+      <span>
+        Search
+      </span>
+    </button>
+  </form>
+</DocumentFragment>
+`;

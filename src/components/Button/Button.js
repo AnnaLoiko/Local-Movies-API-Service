@@ -4,7 +4,7 @@ import style from "./style.module";
 import PropTypes from 'prop-types';
 
 const Button = React.memo((props) => {
-  const { type = "text", text = "Button", className = "btnSecondary", addClassName, disabled = false, handleClick, autoFocus } = props;
+  const { type = "text", text = "Button", className = "btnSecondary", addClassName = "", disabled = false, handleClick, autoFocus = false } = props;
 
 
   return (

@@ -39,7 +39,7 @@ const MultiSelect = (props) => {
       </div>
 
       <div className={`${style.selectDropDown} ${!isChecked && style.hide}`}>
-        {genresList.map((item, index) => (
+        {genresList && genresList.map((item, index) => (
           <div key={index}>
             <input
               type="checkbox"

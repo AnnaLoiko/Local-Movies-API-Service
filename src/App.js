@@ -15,7 +15,7 @@ import ErrorPage from "@/pages/ErrorPage";
 import ScrollToTop from "@/components/Layout/ScrollToTop";
 
 
-const store = createStore(
+export const store = createStore(
   reducer,
   composeWithDevTools(applyMiddleware(thunk, logger))
 );

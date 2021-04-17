@@ -1,12 +1,13 @@
 import axios from 'axios';
 import ACTIONS from "./actionTypes";
+import 'cross-fetch/polyfill';
 
 
 export const getMovies = (data = {}) => {
   return (dispatch) => {
     dispatch({ type: ACTIONS.MOVIE_LOADER, payload: true });
 
-    axios({
+    return axios({
       method: 'GET',
       url: 'http://localhost:4000/movies',
       params: {
@@ -100,7 +101,8 @@ export const deleteMovie = (movieId) => {
 
 export const getMovieById = (movieId) => {
   return (dispatch) => {
-    axios({
+    // axios({
+    return axios({
       method: 'GET',
       url: `http://localhost:4000/movies/${movieId}`,
       params: {
