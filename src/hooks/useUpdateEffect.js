@@ -6,6 +6,7 @@ export default function useUpdateEffect(effect, deps) {
   useEffect(() => {
     if (mounted.current) return effect();
     mounted.current = true;
+    
     return undefined;
   }, deps);
 }

@@ -12,15 +12,7 @@ module.exports = {
     ".+\\.(css|styl|less|sass|scss)$": "jest-css-modules-transform",
     "\\.(jpg|jpeg|png|gif|webp|svg)$": "jest-transform-file",
   },
-  transformIgnorePatterns: ['<rootDir>/node_modules/'],
   collectCoverage: true,
+  transformIgnorePatterns: [`/node_modules/node_modules/react-datepicker/dist/react-datepicker.css`],
   coveragePathIgnorePatterns: ["<rootDir>/public/", "<rootDir>/node_modules/"],
-  coverageThreshold: {
-    "global": {
-      "branches": 50,
-      "functions": 40,
-      "lines": 50,
-      "statements": 50
-    },
-  }
 }

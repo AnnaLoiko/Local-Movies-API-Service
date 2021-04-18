@@ -44,6 +44,7 @@ const Search = (props) =>  {
         className="btnPrimary"
         addClassName="btnLarge"
         handleClick={(e) => searchChange(e)}
+        role="searchButton"
       />
     </form>
   )
