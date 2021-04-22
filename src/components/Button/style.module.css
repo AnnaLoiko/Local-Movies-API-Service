@@ -53,29 +53,25 @@
     min-width: 240px;
 }
 
-.btnZoom {
-    width: 60px;
-    height: 40px;
-    background-image: url("../../assets/images/zoom.png");
-    background-repeat: no-repeat;
-    background-size: 30px;
-    background-position: center;
-}
-
 .btnPrimary:hover,
 .btnPrimary:active,
-.btnPrimaryInvert:hover,
-.btnPrimaryInvert:active,
 .btnSecondary:hover,
 .btnSecondary:active {
-    border: 2px solid #efefef;
+    border: 2px solid #fc626f;
+    background-color: #fc626f;
     color: #efefef;
+}
+
+.btnPrimaryInvert:hover,
+.btnPrimaryInvert:active{
+    border: 2px solid #ac3a44;
+    background-color: #000000;
+    color: #ac3a44;
 }
 
 .btnPrimary:disabled,
 .btnSecondary:disabled {
-    border: 2px solid #efefef;
+    border: 2px solid #353434;
+    background-color: #353434;
     color: #efefef;
 }
-
-

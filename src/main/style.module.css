@@ -21,3 +21,11 @@
   padding: 40px 0;
   width: 100%;
 }
+
+.notMovieFound {
+  width: 100%;
+  font-size: 35px;
+  text-align: center;
+  padding-top: 100px;
+  text-transform: capitalize;
+}

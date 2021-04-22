@@ -6,6 +6,7 @@ import FilterItem from './FilterItem/FilterItem';
 const MovieFilter = (props) => {
   const { filterKeys, params, getFilterMovies } = props;
 
+
   return (
     <ul>
       {filterKeys.map((item, index) => (

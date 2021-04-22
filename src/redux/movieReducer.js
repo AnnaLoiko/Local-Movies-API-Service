@@ -4,11 +4,13 @@ const initialState = {
   movies: [],
   currentMovie: {},
   params: {
-    filterActiveKey: "All",
-    sortActiveKey: "release_date",
+    filterActiveKey: '',
+    sortActiveKey: 'release_date',
     sortOrder: '',
+    search: '',
+    searchBy: 'title',
   },
-  filterKeys: ["All", 'Documentary', 'Comedy', 'Horror', 'Crime'],
+  filterKeys: ['All', 'Documentary', 'Comedy', 'Horror', 'Crime'],
   sortByKeys: [
     { key: "release_date", title: "Release date", sortOrder: "desc", isSelected: false },
     { key: "release_date", title: "Release date", sortOrder: "asc", isSelected: false },
@@ -19,12 +21,13 @@ const initialState = {
   messageAddMovieSucc: false,
   messageEditMovieSucc: false,
   errorGetMovie: false,
+  errorGetMovieById: false,
   
   // not use yet
   errorAddMovie: false,
   errorEditMovie: false,
   errorDeleteMovie: false,
-  errorGetMovieById: false,
+  errorSearchMovie: false,
 }
 
 const movieReducer = (state = initialState, action) => {
@@ -45,6 +48,7 @@ const movieReducer = (state = initialState, action) => {
           ...action.payloadParams,
         },
         errorGetMovie: false,
+        errorGetMovieById: false,
       };
 
     case ACTIONS.GET_MOVIE_ERROR:
@@ -119,6 +123,12 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         errorGetMovieById: true,
+      };
+
+    case ACTIONS.RESET_SEARCH_DATA:
+      return {
+        ...state,
+        params: {...state.params, search: '' },
       };
 
     default:
