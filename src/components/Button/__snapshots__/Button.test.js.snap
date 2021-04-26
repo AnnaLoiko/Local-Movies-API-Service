@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Button component: Expects to find button HTML element in the DOM 1`] = `
+<button
+  autoFocus={false}
+  className="btnSecondary  "
+  disabled={false}
+  type="text"
+>
+  <span>
+    Button
+  </span>
+</button>
+`;

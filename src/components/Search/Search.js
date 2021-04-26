@@ -23,8 +23,8 @@ const Search = (props) =>  {
   }
 
   useUpdateEffect(() => {
-    !params.search && setValue('');
-  }, [params.search])
+    params && !params.search && setValue('');
+  }, [params && params.search])
 
   return (
     <form>
@@ -34,6 +34,7 @@ const Search = (props) =>  {
           placeholder="What do you want to watch?"
           value={value}
           onChange={e => {setValue(e.target.value)}}
+          role='textbox'
         />
       </div>
       
@@ -43,6 +44,7 @@ const Search = (props) =>  {
         className="btnPrimary"
         addClassName="btnLarge"
         handleClick={(e) => searchChange(e)}
+        role="searchButton"
       />
     </form>
   )

@@ -1,12 +1,13 @@
 import axios from 'axios';
 import ACTIONS from "./actionTypes";
+import 'cross-fetch/polyfill';
 
 
 export const getMovies = (data = {}) => {
   return (dispatch) => {
     dispatch({ type: ACTIONS.MOVIE_LOADER, payload: true });
 
-    axios({
+    return axios({
       method: 'GET',
       url: 'http://localhost:4000/movies',
       params: {
@@ -40,7 +41,7 @@ export const getMovies = (data = {}) => {
 
 export const addMovie = (newMovie) => {
   return (dispatch) => {
-    axios({
+    return axios({
       method: 'POST',
       url: 'http://localhost:4000/movies',
       data: newMovie,
@@ -59,7 +60,7 @@ export const addMovie = (newMovie) => {
 
 export const editMovie = (editedMovie) => {
   return (dispatch) => {
-    axios({
+    return axios({
       method: 'PUT',
       url: 'http://localhost:4000/movies',
       data: editedMovie,
@@ -79,7 +80,7 @@ export const editMovie = (editedMovie) => {
 
 export const deleteMovie = (movieId) => {
   return (dispatch) => {
-    axios({
+    return axios({
       method: 'DELETE',
       url: `http://localhost:4000/movies/${movieId}`,
       params: {
@@ -100,7 +101,7 @@ export const deleteMovie = (movieId) => {
 
 export const getMovieById = (movieId) => {
   return (dispatch) => {
-    axios({
+    return axios({
       method: 'GET',
       url: `http://localhost:4000/movies/${movieId}`,
       params: {

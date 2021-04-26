@@ -1,11 +1,23 @@
 import React, { useEffect, useCallback } from "react";
 import ReactDOM from 'react-dom';
+
 import style from "./style.module";
 
 import PropTypes from 'prop-types';
 
 const Modal = (props) => {
   const { isOpen, title, children, clickCloseModal } = props;
+
+  const element = document.createElement('div')
+
+  useEffect(() => {
+    if (!document.getElementById('root')) {
+      document.body.appendChild(element)
+      
+      return () => document.body.removeChild(element)
+    }
+
+  }, []);
 
   const escCloseModal = useCallback((event) =>{
     if (event.keyCode === 27) {
@@ -29,7 +41,7 @@ const Modal = (props) => {
           
           <div className={style.modal}>
             <div className={style.modalHeader}>
-              <span className={style.closeBtn} onClick={clickCloseModal}></span>
+              <span data-testid="closeButton" className={style.closeBtn}  onClick={clickCloseModal}></span>
               <h2>{title}</h2>
             </div>
             <div className={style.modalContent}>
@@ -39,7 +51,8 @@ const Modal = (props) => {
         </>
       }
     </>,
-    document.getElementById("root")
+    // element
+    document.getElementById('root') || element
   );
 }
 

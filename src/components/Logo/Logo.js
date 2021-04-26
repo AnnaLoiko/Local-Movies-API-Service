@@ -6,10 +6,7 @@ const Logo = () => {
   return (
     <Link 
       className={style.logo}
-      to={{
-        pathname: "/",
-        state: "fromLogo"
-      }}
+      to="/"
     >
       <strong>netflix</strong>roulette
     </Link>
