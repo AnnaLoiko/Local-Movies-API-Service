@@ -1,0 +1,6 @@
+.topWrap {
+  position: relative;
+  background: #424242 no-repeat top center / cover url("/images/bgMain.jpg");
+  min-height: 395px;
+  border-bottom: 10px solid #555555;
+}

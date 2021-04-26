@@ -1,0 +1,146 @@
+.label {
+  color: #F65261;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding-bottom: 5px;
+  font-size: 14px;
+}
+
+.lableSelect {
+  color: #f65261;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding-bottom: 5px;
+  font-size: 14px;
+}
+
+.inputWrap {
+  background-color: #2e2e2e;
+  border-radius: 5px;
+  position: relative;
+  z-index: 3;
+  display: block;
+  position: relative;
+  width: 100%;
+  margin-right: 20px;
+  border: 0;
+  padding: 0 60px 0 20px;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  height: 54px;
+  line-height: 54px;
+  user-select: none;
+}
+
+.inputWrap p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  padding: 0;
+  color: #fbfbfb;
+}
+
+.showPlaceholder p {
+  color: #999999;
+}
+
+.inputWrap::after {
+  content: "";
+  position: absolute;
+  right: 23px;
+  top: 23px;
+  width: 0;
+  height: 0;
+  border: 9px solid transparent;
+  border-top: 9px solid #f65261;
+  cursor: pointer;
+}
+
+.inputWrap.up::after {
+  top: 18px;
+  border: 9px solid transparent;
+  border-bottom: 9px solid #f65261;
+}
+
+.selectDropDown {
+  color: #ffffff;
+  background-color: #232323;
+  padding: 0 20px;
+  box-shadow: 0 1px 10px 2px #000000;
+  border-radius: 0 0 5px 5px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.selectDropDown.hide {
+  display: none;
+}
+
+.selectDropDown > div {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.lableCheckbox {
+  align-items: center;
+  user-select: none;
+  position: relative;
+  cursor: pointer;
+  display: block;
+  padding: 10px 0;
+}
+
+.checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.checkbox + label::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  vertical-align: top;
+  height: 16px;
+  border-radius: 2px;
+  margin-right: 10px;
+  border: 1px solid #ffffff;
+  background-color: #ffffff;
+  top: 3px;
+  position: relative;
+}
+
+.checkbox:checked + label::before {
+  border-color: #f65261;
+  background-color: #f65261;
+}
+
+.checkbox + label::after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 3px;
+  display: none;
+  width: 11px;
+  height: 6px;
+  margin-right: 10px;
+  border: 2px solid #ffffff;
+  border-right: none;
+  border-top: none;
+  transform: rotate(-45deg);
+}
+
+.checkbox:checked + label::after {
+  display: block;
+}
+
+.errorInput {
+  border: 1px solid #F65261 !important;
+}
