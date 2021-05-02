@@ -1,0 +1,78 @@
+@import '/custom-reset.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
+
+body {
+  min-height: 100%;
+  min-width: 1200px;
+  background : #555555;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  line-height: 1.43;
+  font-weight: 300;
+}
+
+strong {
+  font-weight: 700;
+}
+
+.errorInput {
+  display: block;
+  color: #F65261;
+  font-size: 12px;
+  background: transparent;
+  padding: 3px 0;
+}
+
+.label {
+  color: #F65261;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding-bottom: 5px;
+  font-size: 14px;
+}
+
+#root {
+  position: relative;
+  min-height: 400px;
+  overflow-y: auto;
+}
+
+div {
+  cursor: default;
+}
+
+p {
+  cursor: text;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 50px #2e2e2e inset;
+  -webkit-text-fill-color: #fbfbfb;
+  border-radius: 5px;
+  border: 1px solid #2e2e2e;
+}
+
+.react-datepicker__input-container input::placeholder {
+  color: #999999;
+}
+
+.react-datepicker__input-container input::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.react-datepicker__input-container input::-moz-placeholder {
+  color: #999999;
+}
+
+.react-datepicker__input-container input:-ms-input-placeholder {
+  color: #999999;
+}

@@ -5,6 +5,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const isDev = process.env.NODE_ENV === "development";
+
+// Apply React optimization techniques “// PATTERN: {Using Production Mode Flag in Webpack}” 
 const isProd = process.env.NODE_ENV === "production";
 
 const filename = (ext) => isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`;

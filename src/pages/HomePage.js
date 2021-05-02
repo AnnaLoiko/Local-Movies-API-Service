@@ -21,11 +21,13 @@ const HomePage = (props) => {
     if (location.pathname === "/" && location.state === "fromLogo") { getMovies(), resetSearchData() };
   }, [location.state])
 
+  // Apply React optimization techniques “// PATTERN: {Avoid inline function definition}”
   const handleClick = useCallback(() => {
     setOpenModal(true)
   }, []);
 
   return (
+    // Apply React optimization techniques “// PATTERN: {use Fragment to avoid additional HTML element wrapper}
     <>
       <Layout>
         <div className={style.addMovieBtnWrap}>

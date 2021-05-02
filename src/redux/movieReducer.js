@@ -1,3 +1,10 @@
+// // examples from good Airbnb best practices:
+// // 1)  [someArr].map((x) => x.id);   It’s ok to omit the return if the function body consists of a single statement returning an expression without side effects
+// // 2)  Use line breaks after open and before close array brackets if an array has multiple lines
+// // 3)  examples from good Airbnb best practices:
+// // 4)  [...state]   Use array spreads to copy arrays.
+// // 5)  {...state, errorGetMovie: true}    Use the object rest operator to get a new object with certain properties omitted
+
 import ACTIONS from "./actionTypes";
 
 const initialState = {
@@ -22,8 +29,6 @@ const initialState = {
   messageEditMovieSucc: false,
   errorGetMovie: false,
   errorGetMovieById: false,
-  
-  // not use yet
   errorAddMovie: false,
   errorEditMovie: false,
   errorDeleteMovie: false,

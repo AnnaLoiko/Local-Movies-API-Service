@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-import style from "./style.module";
+import style from "./style.module.css";
 
 import PropTypes from "prop-types";
 import useToggle from "@/hooks/useToggle";
+
+// Apply React optimization techniques - avoid using index as key for map
+import shortid from 'shortid';
 
 const MultiSelect = (props) => {
   const { genresList, placeholder, handleChange, value = [] } = props;
@@ -40,7 +43,7 @@ const MultiSelect = (props) => {
 
       <div className={`${style.selectDropDown} ${!isChecked && style.hide}`}>
         {genresList && genresList.map((item, index) => (
-          <div key={index}>
+          <div key={shortid.generate()}>
             <input
               type="checkbox"
               className={style.checkbox}

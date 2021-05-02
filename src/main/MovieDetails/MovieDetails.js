@@ -31,6 +31,7 @@ const MovieDetails = (props) => {
 
 
   return (
+    // Apply React optimization techniques “// PATTERN: {use Fragment to avoid additional HTML element wrapper}
     <>
     {errorGetMovieById && <Redirect to="/404" />}
     <div className={style.wrap}>

@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 
 import FilterItem from './FilterItem/FilterItem';
 
+// Apply React optimization techniques “// PATTERN: {Avoid using index as key for map}”
+import shortid from 'shortid';
+
 const MovieFilter = (props) => {
   const { filterKeys, params, getFilterMovies } = props;
 
@@ -11,7 +14,7 @@ const MovieFilter = (props) => {
     <ul>
       {filterKeys.map((item, index) => (
         <FilterItem
-          key={index}
+          key={shortid.generate()}
           title={item}
           isSelected={item === params.filterActiveKey}
           handleClick={() => getFilterMovies({ ...params, filterActiveKey: item })}

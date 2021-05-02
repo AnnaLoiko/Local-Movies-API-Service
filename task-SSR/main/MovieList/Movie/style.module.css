@@ -1,0 +1,87 @@
+.itemWrap {
+  width: 332px;
+  margin: 0 22px 35px;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.itemInfo {
+  position: relative;
+}
+
+.itemImgWrap {
+  margin-bottom: 26px;
+  height: 444px;
+  background: #424242 no-repeat center / 140px url("/images/bg-no-image.png");
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+
+.itemImgWrap a {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.itemImgWrap img {
+  width: 100%;
+}
+
+.itemData {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 1px solid #b4b3b3;
+  color: #b4b3b3;
+  font-size: 13px;
+  line-height: 20px;
+  padding: 0 10px;
+  border-radius: 5px;
+  height: 22px;
+  width: 48px;
+}
+
+.itemGenre {
+  color: #a1a1a1;
+  font-size: 16px;
+  margin-top: 7px;
+}
+
+.itemInfo h3 {
+  color: #dddddd;
+  font-size: 16px;
+  padding-right: 50px;
+}
+
+.dropDownWrap {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.iconDropDown {
+  opacity: 0;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #232323;
+  text-align: center;
+  padding: 0 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.iconDropDown:after {
+  content: '\2807';
+  font-size: 25px;
+  line-height: 40px;
+}
+
+.itemWrap:hover .iconDropDown {
+  opacity: 1;
+}

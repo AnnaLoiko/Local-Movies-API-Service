@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from "react";
 import ReactDOM from 'react-dom';
 
-import style from "./style.module";
+import style from "./style.module.css";
 
 import PropTypes from 'prop-types';
 
@@ -34,6 +34,7 @@ const Modal = (props) => {
 
 
   return ReactDOM.createPortal(
+    // Apply React optimization techniques “// PATTERN: {use Fragment to avoid additional HTML element wrapper}
     <>
       {isOpen &&
         <>

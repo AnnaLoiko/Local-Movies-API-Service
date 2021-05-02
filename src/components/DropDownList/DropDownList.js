@@ -1,6 +1,9 @@
 import React, {useCallback, useEffect} from "react";
 import style from "./style.module";
 
+// Apply React optimization techniques “// PATTERN: {Avoid using index as key for map}”
+import shortid from 'shortid';
+
 import PropTypes from 'prop-types';
 
 const DropDownList = (props) => {
@@ -27,7 +30,7 @@ const DropDownList = (props) => {
       <div className={style.dropDownList}>
         {items.map((item, index) => (
           <div
-            key={index}
+            key={shortid.generate()}
             className={`${item.isSelected && style.active} ${style.item}`}
             onClick={item.handleClick}
           >

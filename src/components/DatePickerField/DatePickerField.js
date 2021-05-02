@@ -6,7 +6,9 @@ import style from "./style.module";
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 
-const DatePickerField = ({ ...props }) => {
+// Apply React optimization techniques “// PATTERN: {Avoid spreding props on DOM elements}”
+const DatePickerField = (props) => {
+  const {id, name, placeholderText} = props;
   const { setFieldValue } = useFormikContext();
   const [field] = useField(props);
 
@@ -18,8 +20,9 @@ const DatePickerField = ({ ...props }) => {
 
       <div className={style.itemDate}>
         <DatePicker
-          {...field}
-          {...props}
+          id={id}
+          name={name}
+          placeholderText={placeholderText}
           selected={ 
             (field.value && new Date(field.value)) || null}
           onSelect={(val) => {

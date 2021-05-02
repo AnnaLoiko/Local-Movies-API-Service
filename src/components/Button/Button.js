@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import style from "./style.module";
+import style from "./style.module.css";
 
 import PropTypes from 'prop-types';
 
-const Button = React.memo((props) => {
+// Apply React optimization techniques “// PATTERN: {Memoize React Component}”
+const Button = (props) => {
   const { type = "text", text = "Button", className = "btnSecondary", addClassName = "", disabled = false, handleClick, autoFocus = false } = props;
 
 
@@ -18,7 +19,7 @@ const Button = React.memo((props) => {
       <span>{text}</span>
     </button>
   )
-});
+};
 
 
 Button.propTypes = {
@@ -29,4 +30,4 @@ Button.propTypes = {
   handleClick: PropTypes.func,
 };
 
-export default Button;
+export default React.memo(Button);

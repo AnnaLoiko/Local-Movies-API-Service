@@ -1,3 +1,7 @@
+// // examples from good Airbnb best practices:
+// // 1)  `http://localhost:4000/movies/${movieId}`  Use template strings instead of concatenation
+// // 2) string 127 example -  Use named function expressions instead of function declarations. Lexical name distinguished from the variable-referenced invocations
+
 import axios from 'axios';
 import ACTIONS from "./actionTypes";
 import 'cross-fetch/polyfill';
@@ -120,6 +124,6 @@ export const getMovieById = (movieId) => {
   }
 };
 
-export const postMessage = () => ({type: ACTIONS.PUT_MESSAGE_ADD_MOVIE_SUCCESS, payload: false });
+export const postMessage = function postMessageAfterSuccessAddMovie () { return {type: ACTIONS.PUT_MESSAGE_ADD_MOVIE_SUCCESS, payload: false }};
 
 export const resetSearchData = () => ({type: ACTIONS.RESET_SEARCH_DATA});
