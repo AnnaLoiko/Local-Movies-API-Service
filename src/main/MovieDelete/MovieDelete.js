@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from "react";
+import React from "react";
 import { connect } from 'react-redux';
 import style from "./style.module.css";
 

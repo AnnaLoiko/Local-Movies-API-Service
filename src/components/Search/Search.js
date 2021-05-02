@@ -2,7 +2,7 @@ import React, { useState, useEffect  } from "react";
 import { connect } from 'react-redux';
 import { useHistory, useLocation } from "react-router-dom";
 
-import style from "./style.module";
+import style from "./style.module.css";
 
 import Input from '@/Components/Input/Input';
 import Button from '@/Components/Button/Button';

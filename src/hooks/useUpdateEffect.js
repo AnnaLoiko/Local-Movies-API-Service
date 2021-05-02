@@ -1,3 +1,4 @@
+// Apply React optimization techniques “// PATTERN: {HOC} - analog shouldComponentUpdate”
 import { useRef, useEffect } from 'react';
 
 export default function useUpdateEffect(effect, deps) {

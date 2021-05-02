@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 
 import MovieSortItem from './MovieSortItem/MovieSortItem';
 
+import shortid from 'shortid';
+// Apply React optimization techniques “// PATTERN: {Avoid using index as key for map}”
+
 import useToggle from '@/hooks/useToggle';
 
 const MovieSort = (props) => {
@@ -26,7 +29,7 @@ const MovieSort = (props) => {
         <ul className={style.dropDownList}>
           {sortByKeys.map((item, index) => (
             <MovieSortItem
-              key={index}
+              key={shortid.generate()}
               title={item.title}
               isSelected={item.isSelected}
               sortOrder={item.sortOrder}
