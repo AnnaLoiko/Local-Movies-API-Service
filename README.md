@@ -1,5 +1,5 @@
 # Local-Movies-API-Service
-## [You can see application demo here](https://annaloiko.github.io/Local-Movies-API-Service/) 
+## [Result of performance audit by lighthouse is here](https://pastenow.ru/e4d2d3f902cf74dcaccdc946497248af) 
 
 ###### Task 1: Core concepts
 Here is the link on [codesandbox](https://codesandbox.io/s/fragrant-river-u4ggc?file=/src/App.js) with creating components in different ways.
